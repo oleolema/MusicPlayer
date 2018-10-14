@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 
 <head>
     <meta charset="UTF-8">
@@ -107,11 +107,11 @@
                     <i class="fa fa-volume-down volumeButton" aria-hidden="true"></i>
                     <div class="volumeBox">
                         <i id="volume-button" class="fa fa-volume-down" aria-hidden="true"></i>
-                        
-                            <div class="volumeLine">
-                                <div class="volumeBoll"></div>
-                            </div>
-                            <div class="volumeShell"></div>
+
+                        <div class="volumeLine">
+                            <div class="volumeBoll"></div>
+                        </div>
+                        <div class="volumeShell"></div>
                     </div>
                 </div>
             </div>
@@ -157,12 +157,16 @@
     music.smallScreen.init();
     music.sheetObj.getAllOfSheet(function (index) {
         if (index == 0) {
-            music.useSheet(0, false);
+            // music.useSheet(0, false);
             music.sequenceObj.canClick();
             music.loading.className = "loaded";
             // new Toast("加载完成",1000);
+            
+            //加载已保存的设置信息
+            music.loadSetting();
         }
     });
+
 
 
 </script>

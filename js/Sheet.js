@@ -143,6 +143,7 @@
         });
         this.sMenuObj.showMenu();
         self.backButton && self.backButton.hide();
+
     }
     //显示歌单中的歌曲
     Sheet.prototype.showMusicList = function () {
@@ -276,14 +277,14 @@
             //添加点击事件
             (function () {
                 var index = i;
-
                 li.onclick = function () {
+                    console.info(index);
                     //存储歌单下标
                     self.nowSheetIndex = index;
                     if (self.sheetList[index] === undefined) {
                         return;
                     }
-                    //清空列表
+                    //清空歌曲列表
                     self.mListObj.removeHList();
                     //显示列表
                     self.showMusicList();
@@ -421,7 +422,7 @@
 
             });
             if (back.playlist.length > 0) {
-                new Toast('欢迎' + '<span style="color:#FFEB3B">' + back.playlist[0].creator.nickname + '</span>', 3000);
+                new Toast('欢迎  ' + '<span style="color:#FFEB3B">' + back.playlist[0].creator.nickname + '</span>', 5000);
             }
         });
     }

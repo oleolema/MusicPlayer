@@ -20,14 +20,22 @@
         var self = this;
         //点击事件绑定
         this.sequenceButton.click(function () {
-            self.typeIndex = (self.typeIndex + 1) % self.type.length;
-            self.sequenceButton.children(0).attr('class', self.type[self.typeIndex].icon);
-            self.setLen(music.listObj.list.length);
+            var type = (self.typeIndex + 1) % self.type.length;
+            self.setType(type);
+            //存储设置
+            music.storeSetting();
+
         });
     }
 
+    Sequence.prototype.setType = function (typeIndex) {
+        var self = this;
+        self.typeIndex = typeIndex;
+        self.sequenceButton.children(0).attr('class', self.type[typeIndex].icon);
+        self.setLen(music.listObj.list.length);
+    }
+
     Sequence.prototype.setLen = function (len) {
-        console.info('setLen');
         this.sequenceButton.children(0).attr('class', this.type[this.typeIndex].icon);
         this.type[this.typeIndex].fun(len);
     }
@@ -51,7 +59,7 @@
     }
 
     Sequence.prototype.loop = function (len) {
-        var now = this.now()        
+        var now = this.now()
         len = len || music.listObj.list.length;
         var temp = [];
         for (var i = 0; i < len; i++) {
@@ -62,13 +70,14 @@
     }
 
     Sequence.prototype.setNow = function (e) {
+        console.info('setNow' + e);
         for (var i = 0; i < this.sequence.length; i++) {
             if (this.sequence[i] == e) {
                 this.index = i;
                 return;
             }
         }
-        console.info('out bounds' + this.index);
+        console.error('out bounds: ' + e + '   use: ' + this.index, this.sequence);
     }
 
     Sequence.prototype.now = function () {

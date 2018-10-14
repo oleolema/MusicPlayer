@@ -91,7 +91,7 @@
         if (n == 0) {
             music.menuObj.showMenu();
             music.tool.show();
-            SmallScreen.toScrollTop(self.content[0], $('.musicList li.ing')[0].offsetTop - innerHeight * 0.382);    //定位到当前播放
+            // SmallScreen.toScrollTop(self.content[0], $('.musicList li.ing')[0].offsetTop - innerHeight * 0.382);    //定位到当前播放
         } else {
             music.tool.hide();
         }

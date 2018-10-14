@@ -72,13 +72,15 @@
         this.m;             //所选音乐的信息
         //播放顺序
         this.sequenceObj = new Sequence();
+        //设置信息
+        this.setting;
 
         //初始化
         this.init();
         //设置大小
         this.dynamicSize();
 
-        // this.audio.volume = 0.1;        //音量
+
 
     }
 
@@ -92,7 +94,6 @@
         this.changListColor();          //改变播放列表颜色
         var now = self.sequenceObj.now();
         //判断是否为同一首歌
-
         if (self.listObj.list[now].id == self.preMusicId) {
             if (autoPlay && self.audio.paused) {
                 self.play();
@@ -101,7 +102,8 @@
         }
         self.preMusicId = self.listObj.list[now].id;
 
-
+        //存储设置
+        music.storeSetting();
         var timer = setTimeout(function () {
             self.loading.className = "loading";
         }, 500);
@@ -117,7 +119,7 @@
         self.music.getMusic(function (m) {
             self.m = m;
             if (self.m.music.url == "") {     //歌曲没有版权，加载下一首
-                new Toast("没有版权或者为试听付费音乐！自动播放下一首",3000);
+                new Toast("没有版权或者为试听付费音乐！自动播放下一首", 3000);
                 self.sequenceObj.next();
                 self.loadMusic();
             }
@@ -167,9 +169,7 @@
         return;
 
     }
-
-
-    Music.prototype.useSheet = function (index, autoplay) {
+    Music.prototype.useSheetWithList = function (list, autoplay) {
         var self = this;
         if (autoplay === undefined) {
             autoplay = true;
@@ -177,8 +177,8 @@
         //移除旧列表
         self.listObj.removeAll();
         self.listObj.removeHList();
-        //将获取到的歌单解析到list中
-        self.listObj.list = self.sheetObj.parseSheet(index);
+        //将传入的歌单放入到listObj.list中
+        self.listObj.list = list;
         //如果还没有加载该歌单
         if (!self.listObj.list) {
             return;
@@ -190,7 +190,12 @@
         self.listObj.pushList(function (index) {
             self.listObj.playFunction(index);
         }, false); //不使用列表动画
-        self.loadMusic(autoplay);
+
+    }
+
+    Music.prototype.useSheet = function (index, autoplay) {
+        this.useSheetWithList(this.sheetObj.parseSheet(index), autoplay);
+        this.loadMusic(autoplay);
     }
 
     Music.prototype.refresh = function () {
@@ -201,6 +206,32 @@
         if (!this.smallScreen.isFull) {
             self.moveLyric();
         }
+    }
+    //存储设置
+    Music.prototype.storeSetting = function () {
+        this.setting = {
+            volume: this.audio.volume,
+            sequenceObj_typeIndex: this.sequenceObj.typeIndex,
+            sequenceObj_now: this.sequenceObj.now(),
+            listObj_list: this.listObj.list
+        }
+        localStorage['setting'] = JSON.stringify(this.setting);
+    }
+    //加载设置
+    Music.prototype.loadSetting = function () {
+        var setting = localStorage.getItem('setting');
+        if (setting == null) {
+            this.setting = null;
+            return false;
+        }
+        this.setting = JSON.parse(setting);
+        //还原数据
+        this.setVolume(this.setting['volume']);
+        this.sequenceObj.setType(this.setting['sequenceObj_typeIndex']);
+        this.useSheetWithList(this.setting['listObj_list'], false);
+        this.sequenceObj.setNow(this.setting['sequenceObj_now']);
+        this.loadMusic(false);
+        return true;
     }
 
     //初始化
@@ -223,7 +254,7 @@
         }
 
         //音频加载错误
-        this.audio.onerror = function(){
+        this.audio.onerror = function () {
             console.error("音频加载失败");
         }
 
@@ -231,6 +262,26 @@
 
 
         //音量
+        this.setVolume = function (volume) {
+            volume = volume < 0 ? 0 : volume;
+            volume = volume > 1 ? 1 : volume;
+            //音量条移动
+            var x = volume * volumeLen;
+            volumeBoll.css('left', x + 'px');
+            //图标改变
+            if (volume == 0) {          //音量为0使用这个图标
+                self.volume.find('i').attr('class', 'fa fa-volume-off volumeButton');
+            }
+            else if (volume < 0.5) {
+                self.volume.find('i').attr('class', 'fa fa-volume-down volumeButton');
+            }
+            else {
+                self.volume.find('i').attr('class', 'fa fa-volume-up volumeButton');
+            }
+            self.audio.volume = volume;
+
+        }
+
         var volumeLine = this.volume.find('.volumeLine');
         var volumeBoll = this.volume.find('.volumeBoll');
         var volumeShell = this.volume.find('.volumeShell');
@@ -247,8 +298,9 @@
             return false;
         });
         volumeShell.click(function (e) {
-            changeVolume(e.offsetX - 10);
-            console.info(e.offsetX);
+            self.setVolume((e.offsetX - 10 - 6) / volumeLen);
+            //存储设置
+            self.storeSetting();
             return false;
         });
         //滑动
@@ -267,36 +319,19 @@
                     'transition': "left 0.3s"
                 });
                 console.info(self.audio.volume);
+                //存储设置
+                self.storeSetting();
                 return false;
             });
             var left = volumeBoll[0].offsetLeft;        //球距离最小音量的长度
             var startX = e.clientX - left;                  //最小音量在屏幕上的X坐标
             //鼠标移动      改变音量和球位置
             $(window).mousemove(function (e) {
-                changeVolume(e.clientX - startX + 6);       //鼠标距离最小音量的长度
+                self.setVolume((e.clientX - startX) / volumeLen);       //鼠标距离最小音量的长度
                 return false;
             });
             return false;
         });
-        changeVolume(30);
-        function changeVolume(offsetX) {
-            offsetX = offsetX < 6 ? 6 : offsetX;
-            offsetX = offsetX > volumeLen ? volumeLen : offsetX;
-            volumeBoll.css({
-                left: offsetX - 6 + 'px',
-            });
-            var volume = parseFloat(((offsetX - 6) / volumeLen).toFixed(2));
-            if (volume == 0) {          //音量为0使用这个图标
-                self.volume.find('i').attr('class', 'fa fa-volume-off volumeButton');
-            }
-            else if (volume < 0.5) {
-                self.volume.find('i').attr('class', 'fa fa-volume-down volumeButton');
-            }
-            else {
-                self.volume.find('i').attr('class', 'fa fa-volume-up volumeButton');
-            }
-            self.audio.volume = volume;
-        }
 
         //进度条
         this.progress.onclick = function (e) {
@@ -324,7 +359,7 @@
                 }
             }
         }
-        
+
 
         this.playButton.onclick = function () {
             if (this.className == "playButton") {
@@ -348,6 +383,7 @@
             self.sequenceObj.previous();
             self.loadMusic();
         }
+
 
     }
     Music.prototype.dynamicSize = function () {
@@ -383,7 +419,7 @@
         for (var i = 0; i < list.length; i++) {
             if (list[i].className == 'ing') {
                 list[i].className = ' ';
-                break ;
+                break;
             }
         }
         this.listObj.hList.children[this.sequenceObj.now()].className = 'ing';
