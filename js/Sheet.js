@@ -445,16 +445,16 @@
 
     Sheet.prototype.useHelp = function () {
         var msg =
-            '<h3>⚪ 设置用户\n</h3>' +
-            '<p>1、首先打开网易云音乐官网(<a href="https://music.163.com/" target="_blank" style="color:black">点击我打开</a>)</p>\n' +
+            '<h3 style="color:rgb(255, 123, 145)">⚪ 设置用户\n</h3>' +
+            '<p>1、首先打开网易云音乐官网(<a href="https://music.163.com/" target="_blank" style="color:#FF9800">点击我打开</a>)</p>\n' +
             '<p>2、然后点击页面右上角的“登录”，登录您的账号</p>\n' +
             '<p>3、点击您的头像，进入个人中心</p>\n' +
-            '<p>4、此时浏览器地址栏 /user/home?id= 后面的数字就是您的网易云 ID</p>\n\n' +
+            '<p>4、此时浏览器地址栏<span style="color:#FFEB3B"> /user/home?id= </span>后面的数字就是您的网易云 ID</p>\n\n' +
             '<br>' +
-            '<h3>⚪ 添加歌单</h3>\n' +
+            '<h3 style="color:rgb(255, 123, 145)">⚪ 添加歌单</h3>\n' +
             '<p>1、同样点击 确定 打开网易云音乐官网</p>\n' +
             '<p>2、找到一个需要添加的歌单并点击进入</p>\n' +
-            '<p>3、此时浏览器地址栏playlist?id= 后面的数字就是歌单的ID</p>'
+            '<p>3、此时浏览器地址栏<span style="color:#FFEB3B"> playlist?id= </span>后面的数字就是歌单的ID</p>'
         new Dialog(msg, 100000000);
     }
 
