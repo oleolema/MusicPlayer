@@ -1,5 +1,5 @@
 (function () {
-    window.Toast = function (text, time,close) {
+    window.Toast = function (text, time, close) {
         this.text = text;
         this.time = time || 2000;
         this.otherClose = close;
@@ -7,7 +7,6 @@
     }
 
     Toast.prototype.show = function () {
-        console.info('toast',this);
         var self = this;
         this.toast = $('<div class="toast">' + this.text + '</div>');
         this.icon = $('<i class="fa fa-times" aria-hidden="true"></i>');
@@ -15,15 +14,14 @@
             self.close();
             self.otherClose && self.otherClose();
         });
-       
+
         this.toast.append(this.icon);
         $('body').append(this.toast);
         var line = this.toast.outerWidth() / innerWidth;
-        console.info("line : " + line);
-        if(line > 1){
+        if (line > 1) {
             this.toast.css({
-                'height':60 * line +  'px',
-                'width' : innerWidth + 'px'
+                'height': 60 * line + 'px',
+                'width': innerWidth + 'px'
             });
         }
         this.toast.css({

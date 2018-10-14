@@ -1,6 +1,7 @@
 (function () {
     window.Dialog = function (text, time) {
         var self = this;
+        time = time || 99999999;
         this.show();
         this.toastObj = new Toast(text, time, function () {
             self.close();
@@ -9,7 +10,7 @@
 
     Dialog.prototype.show = function () {
         var self = this;
-        this.full = $('<div class="dialogfull">132</div>');
+        this.full = $('<div class="dialogfull"></div>');
         $('body').append(this.full);
         setTimeout(function () {
             self.full.css('opacity', '1');

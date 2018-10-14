@@ -449,6 +449,7 @@ div.listSlide {
     transition: top 0.618s;
     box-shadow: 3px 3px 20px #38444a;
     word-break: break-word;
+    overflow: auto;
 }
 
 .toast i {

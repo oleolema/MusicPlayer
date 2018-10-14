@@ -112,6 +112,7 @@
         }
         this.button.hide();
         this.isended = true;
+        new Toast("已保存",1000);
     }
 
 })();

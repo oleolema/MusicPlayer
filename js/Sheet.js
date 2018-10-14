@@ -257,7 +257,7 @@
             list["date"] = new Date().getTime();
             console.info(back);
             if (back.msg != undefined) {
-                alert(back.msg);
+                new Toast(back.msg, 1500);
                 callback(-1);
                 return;
             }
@@ -371,7 +371,7 @@
             //将获取的歌单存储
             console.info(back);
             if (back.code != 200) {
-                alert(back.msg);
+                new Toast(back.msg, 1500);
                 return;
             }
             list["date"] = new Date().getTime();
@@ -387,7 +387,7 @@
             self.getAllOfSheet(function (index) {
                 console.info(index);
             });
-            new Toast("已添加 " + back.playlist.name, 3000);
+            new Toast("已添加 " + '<span style="color:#FFEB3B">' + back.playlist.name + '</span>', 3000);
         });
     }
 
@@ -399,11 +399,11 @@
         }
         music.music.getUserSheet(input, function (back) {
             if (back.code != 200) {
-                alert(back.msg);
+                new Toast(back.msg, 1500);
                 return;
             }
             if (back.playlist.length == 0) {
-                alert('这个用户没有歌单');
+                new Toast('这个用户没有歌单', 1500);
                 return;
             }
             //获取初始id
@@ -421,7 +421,7 @@
 
             });
             if (back.playlist.length > 0) {
-                new Toast("欢迎" + back.playlist[0].creator.nickname, 3000);
+                new Toast('欢迎' + '<span style="color:#FFEB3B">' + back.playlist[0].creator.nickname + '</span>', 3000);
             }
         });
     }
@@ -441,6 +441,7 @@
         self.getAllOfSheet(function (index) {
             console.info(index);
         });
+        new Toast("已刷新", 1500);
     }
 
     Sheet.prototype.useHelp = function () {
@@ -455,7 +456,7 @@
             '<p>1、同样点击 确定 打开网易云音乐官网</p>\n' +
             '<p>2、找到一个需要添加的歌单并点击进入</p>\n' +
             '<p>3、此时浏览器地址栏<span style="color:#FFEB3B"> playlist?id= </span>后面的数字就是歌单的ID</p>'
-        new Dialog(msg, 100000000);
+        new Dialog(msg);
     }
 
 })();
