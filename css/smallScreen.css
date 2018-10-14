@@ -74,7 +74,7 @@ body {
     background: #ffffff00;
     transition: color 0.5s;
     top: 140px;
-    overflow: auto!important;
+    overflow: scroll!important;
     color: #fff;
 }
 
@@ -188,6 +188,11 @@ body {
 
 .musicList li.ing {
     background: rgba(3, 169, 244, 0.51)!important;
+}
+.listNumIng{
+    background-image: url(../images/wave.gif);
+    background-repeat: no-repeat;
+    background-position: 85%;
 }
 
 div.listSlide {

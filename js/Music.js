@@ -91,7 +91,7 @@
             autoPlay = true;
         }
         var self = this;
-        this.changListColor();          //改变播放列表颜色
+
         var now = self.sequenceObj.now();
         //判断是否为同一首歌
         if (self.listObj.list[now].id == self.preMusicId) {
@@ -115,6 +115,10 @@
         self.music.picId = self.listObj.list[now].pic_id;
         self.music.lyricId = self.listObj.list[now].lyric_id;
         self.music.source = self.listObj.list[now].source;
+        //改变列表颜色
+        this.changListColor(this.listObj);              //改变播放列表颜色      
+        this.changListColor(this.sheetObj.mListObj);    //改变歌单歌曲列表颜色      
+        this.changListColor(this.searchObj.sListObj);    //改变搜索列表颜色  
 
         self.music.getMusic(function (m) {
             self.m = m;
@@ -414,15 +418,25 @@
         // });
     }
 
-    Music.prototype.changListColor = function () {
-        var list = this.listObj.hList.children;
-        for (var i = 0; i < list.length; i++) {
-            if (list[i].className == 'ing') {
-                list[i].className = ' ';
-                break;
+    //接收一个列表对象，改变该列表正在播放歌曲的颜色
+    Music.prototype.changListColor = function (listObj) {
+        //歌曲列表
+        var hList = listObj.hList.children;
+        var list = listObj.list;
+        for (var i = 0; i < hList.length; i++) {
+            if (hList[i].className == 'ing') {
+                hList[i].className = '';
+                var num = $(hList[i]).find('.listNumIng');
+                num.attr('class','listNum');
+                num.text(i + 1);
+            }
+            if (list[i].id == this.music.musicId && list[i].source == this.music.source) {
+                hList[i].className = 'ing';
+                var num = $(hList[i]).find('.listNum');
+                num.attr('class','listNumIng');
+                num.text('');
             }
         }
-        this.listObj.hList.children[this.sequenceObj.now()].className = 'ing';
     }
 
     Music.prototype.play = function () {

@@ -76,13 +76,14 @@
         for (var i = 0; i < self.content.length; i++) {
             if (i == n) {
                 console.info('down');
-                this.content.eq(i).slideDown(SmallScreen.SDELAY);
+                this.content.eq(i).slideDown(SmallScreen.SDELAY*1);
                 this.title.eq(i).css({
                     background: 'rgba(33, 149, 243, 0.836)'
                 });
             }
             else {
-                this.content.eq(i).slideUp(SmallScreen.SDELAY);
+                this.content.eq(i).slideUp(SmallScreen.SDELAY*1);
+                // this.content.eq(i).hide();
                 this.title.eq(i).css({
                     background: 'rgba(33, 149, 243, 0)'
                 });

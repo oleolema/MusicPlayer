@@ -18,7 +18,7 @@
         var tempNow = now;          //位置2
         var child = $(self.hList.children);
         this.deleteObj.start($(this.hList),
-        //每次点击删除图标
+            //每次点击删除图标
             function (index) {
                 child.eq(index).slideUp(100);
                 if (self.list[index].d == 1) {
@@ -29,7 +29,7 @@
                 if (index < tempNow) {
                     now--;       //当前播放前移
                 }
-        //删除结束
+                //删除结束
             }, function () {
                 console.info('oik');
                 //删除歌
@@ -95,7 +95,7 @@
     List.prototype.insertPlayFunction = function (listChild) {
         var self = music.listObj;
         //如果没有时间
-        if(listChild.dt == undefined){
+        if (listChild.dt == undefined) {
             listChild.dt = 0;
         }
         //如果播放列表已有这首歌，直接播放
@@ -135,13 +135,13 @@
             self.sildebg = $('<div class="listSlide" style="width:100%"   ></div>');
             $(self.hList).before(self.sildebg);
         }
-        
+
         //创建新列表
         for (var i = start; i < len; i++) {
             var li = document.createElement('li');
             var time = Music.addZero(new Date(list[i].dt).getMinutes()) + ':' + Music.addZero(new Date(list[i].dt).getSeconds())
             var html =
-                '<span style="margin-right:2em;width:2em;text-align:right;float:left">' + (i + 1) +
+                '<span style="margin-right:2em;width:2em;text-align:right;float:left" class="listNum">' + (i + 1) +
                 '</span> <span style="float:left;width:30%;margin-right:0px;">' + list[i].name +
                 '</span>';
             //是否有时间
@@ -155,9 +155,10 @@
                 '</span> <span style="float:right">' + list[i].artist +
                 '</span>';
             li.innerHTML = html;
-            // if (i % 2) {
-            //     li.style.background = "rgba(152, 152, 152, 0.49)";
-            // }
+            if (music && list[i].id == music.music.musicId) {
+                console.info(music.music.musicId);
+                li.className = "ing";
+            }
             self.hList.appendChild(li);
             //前20个列表滑动显示
             if (animation && i < 20 + start) {
