@@ -1,0 +1,463 @@
+.smallScreen {
+    color: white;
+    background: rgba(96, 125, 139, 0.67);
+    overflow: hidden;
+    transition: height 0.5s;
+    position: relative;
+    z-index: 999;
+    user-select: none;
+}
+
+body {
+    overflow: hidden;
+}
+
+.fullScreen {
+    overflow: hidden;
+    position: absolute;
+    transition: height 0.5s;
+    z-index: -999;
+}
+
+/*小屏中的css*/
+
+.leftList li {
+    float: left;
+}
+
+.leftList::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+/**顶部导航栏*/
+
+.navi {
+    position: relative;
+    user-select: none;
+    width: auto;
+    background-color: #5656567d;
+    box-shadow: 1px 1px 5px #38444a;
+}
+
+.naviList {
+    margin: 0px;
+    width: 500px;
+}
+
+.naviList li {
+    font-size: 19px;
+    width: 6em;
+    text-align: center;
+    height: 3em;
+    line-height: 3em;
+    transition: all 0.618s;
+    cursor: pointer;
+    margin: 0 18px;
+    padding: 0 5px;
+}
+
+.naviList .li1 {
+    left: 100px;
+}
+
+.naviList .li2 {
+    left: 200px;
+}
+
+.naviList .li3 {
+    left: 300px;
+}
+
+.playing, .sheet, .search {
+    height: 500px;
+    background: #ffffff00;
+    transition: color 0.5s;
+    top: 140px;
+    overflow: auto!important;
+    color: #fff;
+}
+
+/*工具*/
+
+.navi .tools {
+    position: absolute;
+    right: 93px;
+    top: 0px;
+}
+
+.navi .tools i {
+    float: right;
+    bottom: 0px;
+    font-size: 50px;
+    color: rgba(248, 248, 248, 0.527);
+    transition: color 0.5s;
+    margin-right: 20px;
+}
+
+.navi .tools i:hover {
+    color: white !important;
+}
+
+/*菜单*/
+
+.navi .menu {
+    position: absolute;
+    right: 50px;
+    top: 0px;
+    width: 50px;
+    z-index: 10;
+}
+
+.navi .menu i {
+    float: right;
+    bottom: 0px;
+    font-size: 50px;
+    color: rgba(248, 248, 248, 0.527);
+    transition: all 0.5s;
+}
+
+.navi .menu:hover i {
+    color: white !important;
+}
+
+.menuList {
+    width: 110px;
+    transition: all 0.5s;
+    height: 0px;
+    margin: 0px -27.5px;
+    box-shadow: 1px 1px 4px #00000082;
+    overflow: hidden;
+    background-color: #607D8B;
+    border-radius: 5px;
+}
+
+.menuList li {
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 16px;
+    transition: background 0.1s;
+    /* border-bottom: 1px solid rgba(3, 169, 244, 0.97); */
+}
+
+.menuList li:hover {
+    background: rgba(3, 169, 244, 0.97);
+}
+
+/*返回顶部图标*/
+
+.floatBoll {
+    position: fixed;
+    font-size: 50px;
+    text-shadow: rgb(63, 68, 70) 3px 3px 10px;
+}
+
+/*歌列表*/
+
+.musicList li {
+    left: 0px;
+    top: 0px;
+    font-size: 16px;
+    height: 50px;
+    line-height: 50px;
+    transition: height 0.3s;
+    overflow: hidden;
+    /* padding: 10px 0px 10px 10px; */
+    white-space: nowrap;
+}
+
+.musicList li:nth-of-type(2n) {
+    background: rgba(152, 152, 152, 0.49);
+}
+
+.musicList span {
+    width: 20%;
+    /* padding-right: 10%; */
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    height: 50px;
+    /*超出部分不显示*/
+    text-overflow: ellipsis;
+    /*文字超出加省略号*/
+    white-space: nowrap;
+    /*超出不换行*/
+}
+
+.musicList li.ing {
+    background: rgba(3, 169, 244, 0.51)!important;
+}
+
+div.listSlide {
+    position: absolute;
+    height: 50px;
+    top: 0px;
+    z-index: -10;
+    transition: top 0.1s;
+    background: #607d8bb2;
+    opacity: 0;
+}
+
+.playingList {
+    transition: 0s;
+}
+
+/**歌单表*/
+
+.tableList li {
+    float: left;
+    margin: 25px 20px;
+    width: 200px;
+    height: 200px;
+    background-size: 30%;
+    background-image: url(../images/loading-008.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+    box-shadow: 2px 2px 10px 0px #37505d;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+}
+
+.tableList li:hover {
+    border-color: rgba(255, 255, 255, 0.486);
+}
+
+.tableList .bg {
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    transition: all 0.618s;
+}
+
+.tableList li:hover .bg {
+    background-color: #ffffff75;
+}
+
+.tableList .tabletext {
+    margin: 5px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+/*图标*/
+
+/*上滑和下滑*/
+
+.fa-angle-double-up, .fa-angle-double-down {
+    font-size: 48px;
+    text-align: center;
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    transition: all 0.3s;
+    position: absolute;
+    overflow: hidden;
+    opacity: 0;
+    z-index: 99;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.fa-angle-double-up {
+    top: 100px;
+}
+
+.fa-angle-double-down {
+    top: -100px;
+}
+
+.musicImg:hover .fa-angle-double-up, .musicImg:hover .fa-angle-double-down {
+    top: 0px;
+    opacity: 1;
+    background-color: rgba(255, 255, 255, 0.514);
+}
+
+/*歌单加载*/
+
+.sheetLoading i {
+    font-size: 100px;
+    position: absolute;
+    left: 500px;
+    top: 300px;
+}
+
+.sheetLoading .i2 {
+    left: 600px;
+}
+
+.sheetLoaded {}
+
+/*搜索框*/
+
+.searchGroup {
+    position: relative;
+    width: 700px;
+    height: 80px;
+    z-index: 999;
+    transition: width 0.618s;
+    color: #fff;
+    left: 1000px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.searchInput {
+    position: absolute;
+    top: 5px;
+    left: 1px;
+    width: 700px;
+    height: 30px;
+    background: #ffffff00;
+    outline: 0;
+    color: #fff;
+    border: none;
+    border-bottom: 2px solid white;
+    font-size: 18px;
+}
+
+.inputUnderline {
+    /* width: 700px; */
+    height: 2px;
+    background-color: #000000;
+    position: absolute;
+    top: 34.9px;
+    transition: all 0.5s;
+    padding: 0px;
+    left: 50%;
+}
+
+.searchInput:focus+.inputUnderline {
+    padding-right: 701px;
+    left: 0px;
+}
+
+.searchGroup .sButton {
+    right: -1px;
+    width: 60px;
+    height: 29px;
+    padding: 2px 10px;
+    border: 2px solid rgb(255, 255, 255);
+    font-size: 16px;
+    line-height: 29px;
+    transition: all 1s;
+    position: absolute;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+    border-bottom: none;
+}
+
+.searchGroup .sButton:hover {
+    background: white;
+    color: black;
+}
+
+.radioGroup {
+    width: 700px;
+    position: absolute;
+    top: 40px;
+    left: 0px;
+    height: 40px;
+    padding: 0 66px;
+}
+
+.radioGroup::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.radioGroup * {
+    cursor: auto;
+    user-select: none;
+    float: left;
+}
+
+.radioGroup .radio6 {
+    width: 114px;
+    height: 44px;
+    position: absolute;
+    left: 66px;
+    z-index: -10;
+    background-color: rgba(16, 89, 247, 0.651);
+    transition: left 0.5s;
+}
+
+.radioGroup .radio7 {
+    width: 110px;
+    height: 40px;
+    position: absolute;
+    z-index: -10;
+    transition: left 0.3s;
+    background-color: #0000;
+    border-bottom: 2px solid white;
+    opacity: 0;
+}
+
+.radioGroup li div {
+    color: #fff;
+    cursor: pointer;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 40px;
+    border: 2px solid #0000;
+    text-decoration: none;
+    transition: all 0.5s;
+}
+
+/* .radioGroup li:hover {
+    border-bottom:2px solid white;
+} */
+
+.radioGroup .radio1 {
+    left: 0px;
+}
+
+.radioGroup .radio2 {
+    left: 100px;
+}
+
+.radioGroup .radio3 {
+    left: 200px;
+}
+
+.radioGroup .radio4 {
+    left: 300px;
+}
+
+.radioGroup .radio5 {
+    left: 400px;
+}
+
+.searchButton .radioGroup * {
+    width: 15px;
+    height: 15px;
+    display: none;
+}
+
+/*通知条*/
+
+.toast {
+    position: absolute;
+    background: #00BCD4;
+    color: white;
+    z-index: 9999;
+    padding: 18px 50px 18px 30px;
+    transition: top 0.618s;
+    box-shadow: 3px 3px 20px #38444a;
+    word-break: break-word;
+}
+
+.toast i {
+    position: absolute;
+    right: 15px;
+    top:18px;
+    font-size: 20px;
+    transition:color 0.3s;
+}
+.toast i:hover{
+    color:red;
+}

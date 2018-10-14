@@ -1,0 +1,425 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+.musicPlayer * {
+    user-select: none;
+}
+
+.musicPlayer {
+    height: 100px;
+    width: 400px;
+    /* border: 1px solid black; */
+    position: absolute;
+}
+
+.musicName {
+    position: absolute;
+    height: 20px;
+    left: 110px;
+    top: 5px;
+    font-size: 14px;
+    line-height: 20px;
+    overflow: hidden;
+    color: #ffffff;
+}
+
+.bgPic {
+    position: absolute;
+    left: -3px;
+    top: -3px;
+    width: 400px;
+    height: 140px;
+    filter: blur(6.18px) opacity(50%);
+    z-index: -8888;
+    background-size: 400px;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: background 1s;
+}
+
+.loading {
+    position: absolute;
+    width: 400px;
+    height: 140px;
+    /* border: 1px solid black; */
+    background-color: #c3c3c336;
+    background-image: url(../images/5-1503130Q911-50.gif);
+    background-size: 18px;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 9999;
+}
+
+.loaded {
+    display: none;
+}
+
+.musicImg {
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    background-size: 100px 100px;
+    background-repeat: no-repeat;
+    z-index: 0;
+    transition: background 1s;
+}
+
+.progressBar {
+    height: 30px;
+    width: 260px;
+    top: 30px;
+    left: 110px;
+    position: absolute;
+    cursor: pointer;
+}
+
+.progressAll {
+    width: 260px;
+    height: 2px;
+    top: 10px;
+    left: 0px;
+    background: rgb(60, 202, 202);
+    animation: my 30s linear infinite;
+    position: absolute;
+    z-index: -99;
+}
+
+.progressPoint {
+    width: 12px;
+    height: 12px;
+    top: -5px;
+    left: 0px;
+    border-radius: 50%;
+    position: absolute;
+    background: rgb(60, 202, 202);
+    animation: my 30s linear infinite;
+    transition: left 0.3s;
+    z-index: -9;
+}
+
+.progressTime, .progressAllTime {
+    width: 30px;
+    height: 10px;
+    top: 18px;
+    font-size: 10px;
+    text-align: center;
+    position: absolute;
+    color: #ffffff;
+}
+
+.progressAllTime {
+    right: 0px;
+}
+
+/*进度条缓存*/
+
+.progressBuffer span {
+    position: absolute;
+    background: white;
+    height: 2px;
+}
+
+@keyframes my {
+    0% {
+        background: #E91E63;
+    }
+    50% {
+        background: #eeff00;
+    }
+    100% {
+        background: #E91E63;
+    }
+}
+
+.button {
+    width: 260px;
+    height: 30px;
+    /* border: 1px solid black; */
+    position: absolute;
+    left: 110px;
+    top: 60px;
+    /* background: #eeee; */
+}
+
+.button>* {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 0px;
+    background-size: 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    z-index: 999;
+}
+
+.playButton, .pauseButton, .preButton, .nextButton, .listButton, .downloadButton, .searchButton {
+    filter: invert(100%);
+}
+
+.playButton {
+    left: 30px;
+    background-image: url(../images/f04b.png);
+    /* z-index: 99; */
+}
+
+.pauseButton {
+    left: 30px;
+    background-image: url(../images/f04c.png);
+}
+
+.preButton {
+    left: 0px;
+    background-image: url(../images/f048.png);
+}
+
+.nextButton {
+    left: 60px;
+    background-image: url(../images/f051.png);
+}
+
+.downloadButton {
+    right: 0px;
+    text-align: center;
+    line-height: 30px;
+}
+
+.downloada {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    display: inline-block;
+}
+
+.sequenceButton {
+    color: white;
+    right: 30px;
+    text-align: center;
+    line-height: 30px;
+}
+
+/*音量*/
+
+.volume {
+    right: 60px;
+}
+
+.volume i {
+    font-size: 24px;
+    color: white;
+    line-height: 30px;
+    text-align: center;
+    width: 30px;
+    height: 30px;
+}
+
+.volume #volume-button {
+    position: absolute;
+    left: 6px;
+    top: 10px;
+}
+
+.volumeBox {
+    background-color: #607D8B;
+    position: relative;
+    float: left;
+    top: -80px;
+    right: 85px;
+    height: 50px;
+    width: 180px;
+    display: none;
+}
+
+.volumeShell {
+    position: absolute;
+    top: 10px;
+    height: 30px;
+    width: 150px;
+    left: 30px;
+}
+
+.volumeLine {
+    position: relative;
+    top: 22px;
+    height: 3px;
+    width: 130px;
+    left: 40px;
+    background: #9E9E9E;
+}
+
+.volumeBoll {
+    position: absolute;
+    top: -5px;
+    left: -7px;
+    background-color: #00BCD4;
+    border-radius: 100%;
+    width: 14px;
+    height: 14px;
+    transition: left 0.3s;
+    z-index: 1;
+}
+
+/*歌词*/
+
+.lyric {
+    height: 40px;
+    width: 400px;
+    /* background: rgba(238, 238, 238, 0.452); */
+    position: absolute;
+    left: 0px;
+    top: 100px;
+    line-height: 20px;
+    overflow: hidden;
+    transition: height 0.5s;
+    z-index: -999;
+}
+
+.lyricList {
+    list-style: none;
+    text-align: center;
+}
+
+.lyricList li {
+    font-size: 14px;
+    height: 40px;
+    width: 400px;
+    position: absolute;
+    left: 0px;
+    transition: top 0.5s;
+    overflow: hidden;
+    color: #ffffff;
+}
+
+.lyricList .lyricli1 {
+    top: -40px;
+}
+
+.lyricList .lyricli2 {
+    top: 0px;
+}
+
+.navigation li {
+    text-align: center;
+    width: 180px;
+    height: 30px;
+    list-style: none;
+    line-height: 30px;
+    transition: all 1s;
+    border: 1px solid rgba(0, 0, 0, 0);
+}
+
+.navigation li:hover {
+    border: 1px solid rgb(255, 123, 145);
+    background: #ffc0cb9e;
+}
+
+.navigation {
+    display: block;
+}
+
+.navigation::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.mList {
+    /* height: 100px; */
+    width: 400px;
+    height: 0px;
+    background: #20202052;
+    transition: all 1s;
+    position: absolute;
+    top: 140px;
+    overflow: auto;
+    color: #fff;
+}
+
+/*歌词部分*/
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+li {
+    list-style: none;
+}
+
+.myLyric {
+    position: absolute;
+    transition: all 0.5s;
+    background-color: #00000061;
+    z-index: -1000;
+}
+
+.lyricno, .lyricyes {
+    margin: 50px;
+    transition: all 0.5s;
+}
+
+.lyricyes {
+    color: #FFEB3B !important;
+    transition: all 0.5s;
+}
+
+.myLyricList {
+    width: 500px;
+    height: 500px;
+    overflow: auto;
+}
+
+.myLyricList li {
+    text-align: center;
+    color: #ffffff;
+    font-size: 20px;
+}
+
+.lyricBgPic {
+    background: #03A9F4;
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    z-index: -999;
+    top: -50px;
+    left: -50px;
+    background-repeat: no-repeat;
+    background-size: 500px 500px;
+    background-position: center;
+    filter: blur(50px) opacity(0.618);
+    transition: background 1s;
+}
+
+/*定义滚动条高宽及背景*/
+
+::-webkit-scrollbar {
+    width: 8px;
+    opacity: 0;
+}
+
+/*定义滚动条轨道*/
+
+::-webkit-scrollbar-track {
+    opacity: 0;
+}
+
+/* 滑块转角点 */
+
+::-webkit-scrollbar-corner {
+    opacity: 0;
+}
+
+/*定义滑块*/
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #607D8B;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: white;
+}
