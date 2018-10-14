@@ -1,13 +1,13 @@
 (function () {
     window.Toast = function (text, time) {
-        this.text = text || 2000;
-        this.time = time;
+        this.text = text;
+        this.time = time || 2000;
 
         this.show();
     }
 
     Toast.prototype.show = function () {
-        console.info('toast');
+        console.info('toast',this);
         var self = this;
         this.toast = $('<div class="toast">' + this.text + '</div>');
         this.icon = $('<i class="fa fa-times" aria-hidden="true"></i>');
