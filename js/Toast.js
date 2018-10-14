@@ -1,8 +1,8 @@
 (function () {
-    window.Toast = function (text, time) {
+    window.Toast = function (text, time,close) {
         this.text = text;
         this.time = time || 2000;
-
+        this.otherClose = close;
         this.show();
     }
 
@@ -13,6 +13,7 @@
         this.icon = $('<i class="fa fa-times" aria-hidden="true"></i>');
         this.icon.click(function () {
             self.close();
+            self.otherClose && self.otherClose();
         });
        
         this.toast.append(this.icon);
@@ -36,6 +37,7 @@
         }, 20);
         setTimeout(function () {
             self.close();
+            self.otherClose && self.otherClose();
         }, this.time + 618);
     }
 

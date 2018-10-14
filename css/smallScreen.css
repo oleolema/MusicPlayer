@@ -454,10 +454,25 @@ div.listSlide {
 .toast i {
     position: absolute;
     right: 15px;
-    top:18px;
+    top: 18px;
     font-size: 20px;
-    transition:color 0.3s;
+    transition: color 0.3s;
 }
-.toast i:hover{
-    color:red;
+
+.toast i:hover {
+    color: red;
+}
+
+/*对话框*/
+
+.dialogfull {
+    position: absolute;
+    background: #35353575;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    z-index: 9999;
+    opacity: 0;
+    transition:opacity 0.618s;
 }
