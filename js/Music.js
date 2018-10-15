@@ -249,7 +249,7 @@
         }
         //音频
         this.audio.onplay = function () {
-            self.playButton.className = "pauseButton";
+            self.playButton.getElementsByTagName('i')[0].className = "fa fa-pause";
         }
         //播放结束的动作
         this.audio.onended = function () {
@@ -367,7 +367,8 @@
 
 
         this.playButton.onclick = function () {
-            if (this.className == "playButton") {
+            
+            if (self.audio.paused) {
                 self.play();
             }
             else {
@@ -485,7 +486,7 @@
     }
     Music.prototype.pause = function () {
         this.audio.pause();
-        this.playButton.className = "playButton";
+        this.playButton.getElementsByTagName('i')[0].className = "fa fa-play";
     }
 
     Music.addZero = function (num) {

@@ -32,7 +32,7 @@
     top: -3px;
     width: 400px;
     height: 140px;
-    filter: blur(6.18px) opacity(50%);
+    filter: blur(6.18px) opacity(50%) progid:DXImageTransform.Microsoft.Blur(PixelRadius=10, MakeShadow=false); /* IE6~IE9 */
     z-index: -8888;
     background-size: 400px;
     background-position: center;
@@ -156,51 +156,39 @@
     z-index: 999;
 }
 
-.playButton, .pauseButton, .preButton, .nextButton, .listButton, .downloadButton, .FButton {
-    filter: invert(100%);
+.playButton, .pauseButton, .preButton, .nextButton, .sequenceButton, .downloadButton, .volume {
+    color: white;
+    text-align: center;
+    line-height: 30px;
+    width: 30px;
+    height: 30px;
 }
 
 .playButton {
     left: 30px;
-    background-image: url(../images/f04b.png);
+    /* background-image: url(../images/f04b.png); */
     /* z-index: 99; */
 }
 
 .pauseButton {
     left: 30px;
-    background-image: url(../images/f04c.png);
+    /* background-image: url(../images/f04c.png); */
 }
 
 .preButton {
     left: 0px;
-    background-image: url(../images/f048.png);
 }
 
 .nextButton {
     left: 60px;
-    background-image: url(../images/f051.png);
 }
 
 .downloadButton {
     right: 0px;
-    text-align: center;
-    line-height: 30px;
-}
-
-.downloada {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
-    display: inline-block;
 }
 
 .sequenceButton {
-    color: white;
     right: 30px;
-    text-align: center;
-    line-height: 30px;
 }
 
 /*音量*/
@@ -210,12 +198,8 @@
 }
 
 .volume i {
-    font-size: 24px;
-    color: white;
-    line-height: 30px;
-    text-align: center;
-    width: 30px;
-    height: 30px;
+    font-size: 21px;
+
 }
 
 .volume #volume-button {
