@@ -147,7 +147,22 @@
         self.getLyric();
         self.lyricToHtml();
         self.moveLyric();
-        self.bgPic.style.backgroundImage = 'url(' + self.m.pic.url + ')';
+        var imgPixel = new ImagePixel();
+        if (!("ActiveXObject" in window)) {
+            self.bgPic.style.backgroundImage = 'url(' + self.m.pic.url + ')';
+        } else {            //IE不支持高斯模糊blur  ，使用下面纯色
+            imgPixel.loadImg(self.m.pic.url, function () {
+                color = imgPixel.maxColor(200);
+                console.info(color);
+                var rgb = color.substring(1).match(/(\w{2})(\w{2})(\w{2})/);
+                if(rgb[0] > 'aa' && rgb[1] > 'aa' && rgb[2] > 'aa'){        //颜色太白就使用这个颜色
+                    color = "#aaaaaa";
+                }
+                // if()
+                self.bgPic.style.background = color;
+            });
+        }
+
     }
     //设置大小
     Lyric.prototype.setSize = function (width, height) {

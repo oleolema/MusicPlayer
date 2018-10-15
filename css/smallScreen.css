@@ -84,6 +84,7 @@ body {
     position: absolute;
     right: 93px;
     top: 0px;
+    cursor: default;
 }
 
 .navi .tools i {
@@ -107,6 +108,7 @@ body {
     top: 0px;
     width: 50px;
     z-index: 10;
+    cursor: default;
 }
 
 .navi .menu i {

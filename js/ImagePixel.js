@@ -7,7 +7,6 @@
         this.canvas.style.top = "0px";
         this.canvas.style.left = "0px";
         // document.body.appendChild(this.canvas);
-        console.info(this.ctx);
         this.img = new Image;        //图片
         this.data;      //ImageData
     }
@@ -20,7 +19,6 @@
             self.canvas.height = self.img.height;
             self.ctx.drawImage(self.img, 0, 0, self.img.width, self.img.height);     //画到画布上
             self.data = self.ctx.getImageData(0, 0, self.img.width, self.img.height).data;  //读取画布上的像素。
-            console.log(self.data);
             callback(self.data);    // 回调
         }
         this.img.src = src;      //加载图片
@@ -32,23 +30,22 @@
             throw "超出图片宽度";
         }
         var i = (y * this.img.width + x) * 4;
-        var color = "#";
+        var color = "";
         for (var j = 0; j < 4; j++) {
             var hex = this.data[i + j].toString(16);
             color += hex.length == 2 ? hex : '0' + hex;
         }
-        return color;
+        return "#" + color;
     }
 
     ImagePixel.prototype.maxColor = function (increment) {
-        console.info(this.img.width, this.img.height);
         increment *= 4;
         var count = [];
         for (var i = 0; i < this.data.length; i += increment) {
             if (this.data[i + 3] == 0) {
                 continue;
             }
-            var color = "#";
+            var color = "";
             for (var j = 0; j < 3; j++) {
 
                 var hex = this.data[i + j].toString(16);
@@ -63,11 +60,9 @@
         for (var i in count) {
             if (count[max] < count[i]) {
                 max = i;
-                // console.info(max);
             }
-            console.info(i,count[i]);
         }
-        console.info(max);
+        max = "#" + max;
         return max;
     }
 })();

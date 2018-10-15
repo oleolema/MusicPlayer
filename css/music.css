@@ -1,7 +1,7 @@
 * {
     margin: 0px;
     padding: 0px;
-    font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+    font-family: "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
 }
 
 .musicPlayer * {
@@ -32,7 +32,8 @@
     top: -3px;
     width: 400px;
     height: 140px;
-    filter: blur(6.18px) opacity(50%) progid:DXImageTransform.Microsoft.Blur(PixelRadius=10, MakeShadow=false); /* IE6~IE9 */
+    /* filter: blur(0.618); */
+    opacity: 0.618;
     z-index: -8888;
     background-size: 400px;
     background-position: center;
@@ -199,7 +200,6 @@
 
 .volume i {
     font-size: 21px;
-
 }
 
 .volume #volume-button {
@@ -364,6 +364,7 @@ li {
     font-size: 20px;
 }
 
+
 .lyricBgPic {
     background: #03A9F4;
     position: absolute;
@@ -375,7 +376,8 @@ li {
     background-repeat: no-repeat;
     background-size: 500px 500px;
     background-position: center;
-    filter: blur(50px) opacity(0.618);
+    filter: blur(50px);
+    opacity: 0.618;
     transition: background 1s;
 }
 

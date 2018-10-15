@@ -367,7 +367,7 @@
 
 
         this.playButton.onclick = function () {
-            
+
             if (self.audio.paused) {
                 self.play();
             }
@@ -412,12 +412,9 @@
         this.audio.src = src;
         this.name.innerHTML = name;
         this.img.style.backgroundImage = 'url(' + img + ')';
-        // var imgPixel = new ImagePixel();
-        // imgPixel.loadImg(img, function () {
-        //     // console.info(imgPixel.getPixel(1,0));
-        //     color = imgPixel.maxColor(500);
-        //     $('.naviList').css('backgroundColor', color + '7a');
-        // });
+ 
+
+
     }
 
     //接收一个列表对象，改变该列表正在播放歌曲的颜色
