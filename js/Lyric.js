@@ -30,7 +30,7 @@
         var self = this;
         var list = Object.keys(self.m.lyric.time);
         for (var i = list.length - 1; i >= 0; i--) {        //歌词倒序比较
-            if (music.audio.currentTime > list[i] - 0.4) {   //当前时间大于歌词时间就显示歌词
+            if (music.audio.currentTime > list[i] - 0.618) {   //当前时间大于歌词时间就显示歌词
                 if (self.m.lyric.index == i) {           //如果上次歌词时间与这次相同直接返回
                     return;
                 }

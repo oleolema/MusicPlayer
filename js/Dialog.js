@@ -5,6 +5,8 @@
         this.show();
         this.toastObj = new Toast(text, time, function () {
             self.close();
+        }).css({
+            background: '#607D8B'
         });
     }
 

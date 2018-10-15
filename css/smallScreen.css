@@ -442,9 +442,29 @@ div.listSlide {
 
 /*通知条*/
 
+.color-yellow {
+    color: #FFEB3B;
+}
+
+.color-pink {
+    color: rgb(255, 123, 145);
+}
+
+.color-orange {
+    color: #FF9800;
+}
+
+.background-blue {
+    background-color: #03A9F4;
+}
+
+.background-gray {
+    background-color: #607D8B;
+}
+
 .toast {
     position: absolute;
-    background: #607D8B;
+    background-color: #03A9F4;
     color: white;
     z-index: 9999;
     padding: 18px 50px 18px 30px;

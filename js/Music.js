@@ -123,7 +123,8 @@
         self.music.getMusic(function (m) {
             self.m = m;
             if (self.m.music.url == "") {     //歌曲没有版权，加载下一首
-                new Toast("没有版权或者为试听付费音乐！自动播放下一首", 3000);
+                new Toast('<span class="color-yellow">' + self.listObj.list[now].name + '</span>' + " 没有版权或者为试听付费音乐！自动播放下一首", 3000);
+                console.info(self.listObj.list[now]);
                 self.sequenceObj.next();
                 self.loadMusic();
             }
@@ -427,13 +428,13 @@
             if (hList[i].className == 'ing') {
                 hList[i].className = '';
                 var num = $(hList[i]).find('.listNumIng');
-                num.attr('class','listNum');
+                num.attr('class', 'listNum');
                 num.text(i + 1);
             }
             if (list[i].id == this.music.musicId && list[i].source == this.music.source) {
                 hList[i].className = 'ing';
                 var num = $(hList[i]).find('.listNum');
-                num.attr('class','listNumIng');
+                num.attr('class', 'listNumIng');
                 num.text('');
             }
         }

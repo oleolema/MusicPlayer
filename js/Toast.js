@@ -6,6 +6,17 @@
         this.show();
     }
 
+    Toast.prototype.css = function (c) {
+        this.toast.css(c);
+        return this;
+    }
+
+    Toast.prototype.close = function (c) {
+        this.otherClose = c;
+        return this;
+    }
+
+
     Toast.prototype.show = function () {
         var self = this;
         this.toast = $('<div class="toast">' + this.text + '</div>');

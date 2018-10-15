@@ -388,7 +388,7 @@
             self.getAllOfSheet(function (index) {
                 console.info(index);
             });
-            new Toast("已添加 " + '<span style="color:#FFEB3B">' + back.playlist.name + '</span>', 3000);
+            new Toast("已添加 " + '<span class="color-yellow">' + back.playlist.name + '</span>', 3000);
         });
     }
 
@@ -422,7 +422,7 @@
 
             });
             if (back.playlist.length > 0) {
-                new Toast('欢迎  ' + '<span style="color:#FFEB3B">' + back.playlist[0].creator.nickname + '</span>', 5000);
+                new Toast('欢迎  ' + '<span class="color-yellow">' + back.playlist[0].creator.nickname + '</span>', 5000);
             }
         });
     }
@@ -447,16 +447,16 @@
 
     Sheet.prototype.useHelp = function () {
         var msg =
-            '<h3 style="color:rgb(255, 123, 145)">⚪ 设置用户\n</h3>' +
-            '<p>1、首先打开网易云音乐官网(<a href="https://music.163.com/" target="_blank" style="color:#FF9800">点击我打开</a>)</p>\n' +
+            '<h3 class="color-pink">⚪ 设置用户\n</h3>' +
+            '<p>1、首先打开网易云音乐官网(<a href="https://music.163.com/" target="_blank" class="color-orange">点击我打开</a>)</p>\n' +
             '<p>2、然后点击页面右上角的“登录”，登录您的账号</p>\n' +
             '<p>3、点击您的头像，进入个人中心</p>\n' +
-            '<p>4、此时浏览器地址栏<span style="color:#FFEB3B"> /user/home?id= </span>后面的数字就是您的网易云 ID</p>\n\n' +
+            '<p>4、此时浏览器地址栏<span class="color-yellow"> /user/home?id= </span>后面的数字就是您的网易云 ID</p>\n\n' +
             '<br>' +
-            '<h3 style="color:rgb(255, 123, 145)">⚪ 添加歌单</h3>\n' +
+            '<h3 class="color-pink">⚪ 添加歌单</h3>\n' +
             '<p>1、同样点击 确定 打开网易云音乐官网</p>\n' +
             '<p>2、找到一个需要添加的歌单并点击进入</p>\n' +
-            '<p>3、此时浏览器地址栏<span style="color:#FFEB3B"> playlist?id= </span>后面的数字就是歌单的ID</p>'
+            '<p>3、此时浏览器地址栏<span class="color-yellow"> playlist?id= </span>后面的数字就是歌单的ID</p>'
         new Dialog(msg);
     }
 
