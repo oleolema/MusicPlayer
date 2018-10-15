@@ -173,7 +173,7 @@ body {
     background: rgba(152, 152, 152, 0.49);
 }
 
-.musicList span {
+.musicList>li>span {
     width: 20%;
     /* padding-right: 10%; */
     display: inline-block;

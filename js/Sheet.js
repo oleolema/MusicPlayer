@@ -42,7 +42,6 @@
                 }
             },
             function () {
-
                 var temp = [];
                 for (var i in self.id) {
                     if (self.id[i] != -1) {
@@ -51,10 +50,7 @@
                     }
                 }
                 self.id = temp;
-                console.info(self.id);
                 localStorage['id'] = self.id;       //保存
-                console.info(self.id);
-                self.getUserAllSheet();
             },
             self.id.length
         );
@@ -68,7 +64,11 @@
     Sheet.prototype.getLocalId = function () {
         var id = localStorage['id'];
         if (id != undefined) {//获取到了
-            Sheet.copyArray(this.id, id.split(','));
+            if (id == "") {
+                this.id = [];
+            } else {
+                Sheet.copyArray(this.id, id.split(','));
+            }
         } else {
             localStorage['id'] = this.id;
         }
@@ -203,7 +203,8 @@
         var self = this;
         if (self.userId) {
             self.getUserAllSheet(callback);
-        } else {
+        } else if (self.id) {
+            console.info(self.id)
             self.getAllSheet(callback);
         }
     }
@@ -216,6 +217,7 @@
             //跳过已经加载过的歌单
             if (self.sheetList[i]) {
                 self.write(i);
+                callback && callback(i);
                 continue;
             }
             (function () {
@@ -241,10 +243,10 @@
 
 
     //获取单个歌单
-    Sheet.prototype.getSheet = function (index, callback) {
+    Sheet.prototype.getSheetWithId = function (id, index, callback) {
         var musicObj = music;
         var self = this;
-        var save = localStorage['cache' + self.id[index]];
+        var save = localStorage['cache' + id];
         if (save != undefined) {
             var list = JSON.parse(save);
             var day = (new Date().getTime() - list.date) / 1000 / 60 / 60 / 24;
@@ -255,7 +257,7 @@
                 return;
             }
         }
-        musicObj.music.getSheet(self.id[index], function (back) {
+        musicObj.music.getSheet(id, function (back) {
             var list = back;
             //将获取的歌单存储
             list["date"] = new Date().getTime();
@@ -265,16 +267,20 @@
                 callback(-1);
                 return;
             }
-            localStorage['cache' + self.id[index]] = JSON.stringify(list);       //保存到本地
+            localStorage['cache' + id] = JSON.stringify(list);       //保存到本地
             self.sheetList[index] = list;
             callback && callback(index);        //每加载完成一个调用回调函数
             return list;
         });
     }
+    Sheet.prototype.getSheet = function (index, callback) {
+        this.getSheetWithId(this.id[index], index, callback);
+    }
     //初始化HList，创建好歌单格子
     //如果一边获取歌单一边创建html歌单，歌单位置容易混乱，所以先创建好html再将获取到的歌单对应放入就好
     Sheet.prototype.initHList = function () {
         var self = this;
+
         for (var i = 0; i < self.id.length; i++) {
             var li = document.createElement('li');
             //添加点击事件
@@ -289,15 +295,18 @@
                     }
                     //清空歌曲列表
                     self.mListObj.removeHList();
+                    //添加列表标题
+                    self.setMusicTitle(self.sheetList[index]);
                     //显示列表
                     self.showMusicList();
+                    console.info(self.sheetList[index]);
                     //加载列表
                     //如果这列表没有歌
                     if (self.sheetList[index].playlist.tracks == null) {
-                        console.info(self.sheetList[index]);
+
                         var load = new Loading($('.main'));
                         load.loading();     //开始加载
-                        self.getSheet(index, function (index) {
+                        self.getSheetWithId(self.sheetList[index].playlist.id, index, function (index) {
                             //解析歌单并写入html
                             var list = self.parseSheet(index);
                             self.mListObj.list = list;
@@ -319,6 +328,43 @@
             self.hpList.appendChild(li);
         }
     }
+    //设置标题
+    Sheet.prototype.setMusicTitle = function (sheet) {
+        var self = this;
+        var title = $('<div></div>');
+        var name = $('<span>' + sheet.playlist.name + '</span>');
+        var desc = $('<div>' + (sheet.playlist.description == null ? "" : sheet.playlist.description).replace('\n', '<br>') + '</div>');
+        var img = $('<img src="' + sheet.playlist.coverImgUrl + '">');
+        img.css({
+            "height": "200px"
+        });
+        title.css({
+            "padding": "20px",
+            "height": "200px",
+            "position": "relative",
+            "overflow": "hidden",
+        });
+        name.css({
+            "font-size": "30px",
+            "color": "#ffffff",
+            "font-weight": "bold",
+            "margin-left": "10px",
+            "position": "absolute",
+
+        });
+        desc.css({
+            "position": "absolute",
+            "top": "70px",
+            "left": "230px",
+            "height": "165px",
+            "overflow-y": "auto",
+        });
+        title.append(img);
+        title.append(name);
+        title.append(desc);
+        $(self.mListObj.hList).append(title);
+    }
+
     //写入HTML，
     Sheet.prototype.write = function (index) {
         if (this.sheetList[index] === undefined) {
@@ -337,8 +383,9 @@
     //解析歌单，将歌单转换为音乐播放列表，才能显示在html列表上
     Sheet.prototype.parseSheet = function (index) {
         var self = this;
+        console.info('parseShet index: ' + index);
         if (!self.sheetList[index]) {
-            console.error('self.sheetList[index] == false')
+            console.error('self.sheetList[index] == false，index: ' + index);
             return [];
         }
         var list = self.sheetList[index].playlist.tracks;
@@ -477,6 +524,10 @@
             '<p>· 添加网页图标</p>' +
             '<p>· IE背景模糊失效，修改为纯色</p>'
         new Dialog(msg);
+    }
+
+    Sheet.prototype.showUser = function () {
+
     }
 
 })();

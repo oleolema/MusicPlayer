@@ -36,7 +36,6 @@
                 self.sildeDown();
             }
             self.isDown = !self.isDown;
-            return false;
         });
         //创建一个列表
         this.parent.append(this.hList);

@@ -19,8 +19,9 @@
 
     Toast.prototype.show = function () {
         var self = this;
-        this.toast = $('<div class="toast">' + this.text + '</div>');
+        this.toast = $('<div class="toast"></div>');
         this.icon = $('<i class="fa fa-times" aria-hidden="true"></i>');
+        this.toast.append(this.text);
         this.icon.click(function () {
             self.close();
             self.otherClose && self.otherClose();

@@ -420,7 +420,8 @@
     //接收一个列表对象，改变该列表正在播放歌曲的颜色
     Music.prototype.changListColor = function (listObj) {
         //歌曲列表
-        var hList = listObj.hList.children;
+        var hList = $(listObj.hList).find('li');      //选取li
+        console.info(hList);
         var list = listObj.list;
         for (var i = 0; i < hList.length; i++) {
             if (hList[i].className == 'ing') {
