@@ -114,6 +114,9 @@
             title: "帮助",
             fun: function () { self.useHelp(); }
         }, {
+            title: "更新日志",
+            fun: function () { self.updateLog(); }
+        }, {
             title: "清除所有数据",
             fun: function () {
                 if (confirm("这将会删除您所有数据，是否继续?")) {
@@ -447,16 +450,31 @@
 
     Sheet.prototype.useHelp = function () {
         var msg =
-            '<h3 class="color-pink">⚪ 设置用户\n</h3>' +
+            '<h3 class="color-pink">   设置用户\n</h3>' +
             '<p>1、首先打开网易云音乐官网(<a href="https://music.163.com/" target="_blank" class="color-orange">点击我打开</a>)</p>\n' +
             '<p>2、然后点击页面右上角的“登录”，登录您的账号</p>\n' +
             '<p>3、点击您的头像，进入个人中心</p>\n' +
             '<p>4、此时浏览器地址栏<span class="color-yellow"> /user/home?id= </span>后面的数字就是您的网易云 ID</p>\n\n' +
             '<br>' +
-            '<h3 class="color-pink">⚪ 添加歌单</h3>\n' +
+            '<h3 class="color-pink">   添加歌单</h3>\n' +
             '<p>1、同样点击 确定 打开网易云音乐官网</p>\n' +
             '<p>2、找到一个需要添加的歌单并点击进入</p>\n' +
             '<p>3、此时浏览器地址栏<span class="color-yellow"> playlist?id= </span>后面的数字就是歌单的ID</p>'
+        new Dialog(msg);
+    }
+    Sheet.prototype.updateLog = function () {
+        var msg =
+            '<br><h4 class="color-yellow">  2018-10-13</h4>' +
+            '<p>· 添加 通知框</p>' +
+            '<br><h4 class="color-yellow">  2018-10-14</h4>' +
+            '<p>· 添加 对话框</p>' +
+            '<p>· 添加 音量 歌曲列表 等使用记录添加到本地存储</p>' +
+            '<p>· 添加 歌曲没有版权有通知提示</p>' +
+            '<p>· 添加 当前播放歌曲在所有列表突出显示</p>' +
+            '<br><h4 class="color-yellow">  2018-10-15</h4>' +
+            '<p>· 优化 通知样式</p>' +
+            '<p>· 修复 非chrome浏览器显示异常</p>' +
+            '<p>· 添加 网页终于有了图标</p>'
         new Dialog(msg);
     }
 
