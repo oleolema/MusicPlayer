@@ -71,13 +71,12 @@ body {
 
 .playing, .sheet, .search {
     height: 500px;
-    background: #ffffff00;
+    background: rgba(0, 0, 1, 0);
     transition: color 0.5s;
     top: 140px;
-    overflow: scroll!important;
+    overflow-y: scroll!important;
     color: #fff;
 }
-
 
 /*工具*/
 
@@ -189,7 +188,8 @@ body {
 .musicList li.ing {
     background: rgba(3, 169, 244, 0.51)!important;
 }
-.listNumIng{
+
+.listNumIng {
     background-image: url(../images/wave.gif);
     background-repeat: no-repeat;
     background-position: 85%;
@@ -293,7 +293,6 @@ div.listSlide {
     left: 600px;
 }
 
-
 /*搜索框*/
 
 .searchGroup {
@@ -313,7 +312,7 @@ div.listSlide {
     left: 1px;
     width: 700px;
     height: 30px;
-    background: #ffffff00;
+    background: rgba(0, 0, 0, 0);
     outline: 0;
     color: #fff;
     border: none;
@@ -478,5 +477,5 @@ div.listSlide {
     bottom: 0px;
     z-index: 9999;
     opacity: 0;
-    transition:opacity 0.618s;
+    transition: opacity 0.618s;
 }

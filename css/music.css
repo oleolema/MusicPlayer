@@ -156,7 +156,7 @@
     z-index: 999;
 }
 
-.playButton, .pauseButton, .preButton, .nextButton, .listButton, .downloadButton, .searchButton {
+.playButton, .pauseButton, .preButton, .nextButton, .listButton, .downloadButton, .FButton {
     filter: invert(100%);
 }
 
@@ -354,7 +354,7 @@ li {
 .myLyric {
     position: absolute;
     transition: all 0.5s;
-    background-color: #00000061;
+    background-color: rgba(89, 89, 89, 0.35);
     z-index: -1000;
 }
 
