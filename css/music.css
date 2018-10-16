@@ -46,7 +46,7 @@
     width: 400px;
     height: 140px;
     /* border: 1px solid black; */
-    background-color: #c3c3c336;
+    background-color: rgba(195, 195, 195, 0.21);
     background-image: url(../images/5-1503130Q911-50.gif);
     background-size: 18px;
     background-position: center;
@@ -138,11 +138,9 @@
 .button {
     width: 260px;
     height: 30px;
-    /* border: 1px solid black; */
     position: absolute;
     left: 110px;
     top: 60px;
-    /* background: #eeee; */
 }
 
 .button>* {
@@ -299,7 +297,7 @@
 
 .navigation li:hover {
     border: 1px solid rgb(255, 123, 145);
-    background: #ffc0cb9e;
+    background: rgba(255, 192, 203, 0.61);
 }
 
 .navigation {
@@ -316,7 +314,7 @@
     /* height: 100px; */
     width: 400px;
     height: 0px;
-    background: #20202052;
+    background: rgba(32, 32, 32, 0.32);
     transition: all 1s;
     position: absolute;
     top: 140px;
@@ -363,7 +361,6 @@ li {
     color: #ffffff;
     font-size: 20px;
 }
-
 
 .lyricBgPic {
     background: #03A9F4;

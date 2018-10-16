@@ -37,7 +37,7 @@ body {
     position: relative;
     user-select: none;
     width: auto;
-    background-color: #5656567d;
+    background-color: rgba(86, 86, 86, 0.5);
     box-shadow: 1px 1px 5px #38444a;
 }
 
@@ -128,7 +128,7 @@ body {
     transition: all 0.5s;
     height: 0px;
     margin: 0px -27.5px;
-    box-shadow: 1px 1px 4px #00000082;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0);
     overflow: hidden;
     background-color: #607D8B;
     border-radius: 5px;
@@ -203,7 +203,7 @@ div.listSlide {
     top: 0px;
     z-index: -10;
     transition: top 0.1s;
-    background: #607d8bb2;
+    background: rgba(96, 125, 139, 0.7);
     opacity: 0;
 }
 
@@ -240,7 +240,7 @@ div.listSlide {
 }
 
 .tableList li:hover .bg {
-    background-color: #ffffff75;
+    background-color: rgba(255, 255, 255, 0.45);
 }
 
 .tableList .tabletext {
@@ -396,7 +396,7 @@ div.listSlide {
     position: absolute;
     z-index: -10;
     transition: left 0.3s;
-    background-color: #0000;
+    background-color: rgba(0, 0, 0, 0);
     border-bottom: 2px solid white;
     opacity: 0;
 }
@@ -407,7 +407,7 @@ div.listSlide {
     height: 40px;
     line-height: 40px;
     padding: 0 40px;
-    border: 2px solid #0000;
+    border: 2px solid rgba(0, 0, 0, 0);
     text-decoration: none;
     transition: all 0.5s;
 }
@@ -492,7 +492,7 @@ div.listSlide {
 
 .dialogfull {
     position: absolute;
-    background: #35353575;
+    background: rgba(53, 53, 53, 0.45);
     left: 0px;
     right: 0px;
     top: 0px;
