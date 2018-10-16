@@ -12,18 +12,18 @@
 
     Dialog.prototype.show = function () {
         var self = this;
-        this.full = $('<div class="dialogfull"></div>');
-        $('body').append(this.full);
+        this.fill = $('<div class="fillScreen"></div>');
+        $('body').append(this.fill);
         setTimeout(function () {
-            self.full.css('opacity', '1');
+            self.fill.css('opacity', '1');
         }, 20);
     }
 
     Dialog.prototype.close = function () {
         var self = this;
-        this.full.css('opacity', '0');
+        this.fill.css('opacity', '0');
         setTimeout(function () {
-            self.full.remove();
+            self.fill.remove();
         }, 618);
     }
 })();

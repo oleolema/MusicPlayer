@@ -102,9 +102,6 @@
             title: "编辑",
             fun: function () { self.deleteSheet(); }
         }, {
-            title: "当前用户",
-            fun: function () { self.showUser(); }
-        }, {
             title: "刷新歌单",
             fun: function () { self.reflushSheet(); }
         }, {
@@ -333,45 +330,13 @@
     }
     //设置标题
     Sheet.prototype.setMusicTitle = function (sheet) {
-        var self = this;
-        var title = $('<div></div>');
-        var name = $('<span>' + sheet.playlist.name + '</span>');
-        var desc = $('<div>' + (sheet.playlist.description == null ? "" : sheet.playlist.description).replace(/\n/g, '<br>') + '</div>');
-        var img = $('<img src="' + sheet.playlist.coverImgUrl + '">');
-        var bgImg = $('<img src="' + sheet.playlist.coverImgUrl + '">');
-        img.css({
-            "height": "200px"
-        });
-        bgImg.css({
-            "position": "absolute",
-            "width": "100%",
-            "top": "0px",
-            "left": "0px",
-            "z-index": "-1",
-            "filter": "blur(100px)",
-            "height": "240px",
-        });
-        title.css({
-            "padding": "20px",
-            "height": "200px",
-            "position": "relative",
-            "overflow": "hidden",
-        });
-        name.css({
-            "font-size": "30px",
-            "color": "#ffffff",
-            "font-weight": "bold",
-            "margin-left": "10px",
-            "position": "absolute",
-
-        });
+        var title = $('<div class="music-list-title"></div>');
+        var name = $('<span class="music-title-name">' + sheet.playlist.name + '</span>');
+        var desc = $('<div class="music-title-desc">' + (sheet.playlist.description == null ? "" : sheet.playlist.description).replace(/\n/g, '<br>') + '</div>');
+        var img = $('<img src="' + sheet.playlist.coverImgUrl + '" class="music-title-img">');
+        var bgImg = $('<img src="' + sheet.playlist.coverImgUrl + '" class="music-title-bgImg">');
         desc.css({
-            "position": "absolute",
-            "top": "70px",
-            "left": "230px",
-            "height": "165px",
-            "overflow-y": "auto",
-            "font-size": "14px",
+            "width": innerWidth - 240 + "px",
         });
         title.append(img);
         title.append(name);
@@ -379,7 +344,7 @@
         if (!("ActiveXObject" in window)) {     //非IE浏览器
             title.append(bgImg);
         }
-        $(self.mListObj.hList).append(title);
+        $(this.mListObj.hList).append(title);
     }
 
     //写入HTML，
@@ -387,7 +352,7 @@
         if (this.sheetList[index] === undefined) {
             console.error("*" + index);
         }
-        this.hpList.children[index].title = this.sheetList[index].playlist.description;
+        // this.hpList.children[index].title = this.sheetList[index].playlist.description;
         this.hpList.children[index].innerHTML = '<div class="bg">' + '</div>';
         this.hpList.children[index].innerHTML += '<div class="tabletext">' + this.sheetList[index].playlist.name + ' (' + this.sheetList[index].playlist.trackCount + ')' + '</div>';
         this.hpList.children[index].style.backgroundImage = 'url(' + this.sheetList[index].playlist.coverImgUrl + ')';
@@ -521,8 +486,8 @@
             '<p>4、此时浏览器地址栏<span class="color-yellow"> /user/home?id= </span>后面的数字就是您的网易云 ID</p>\n\n' +
             '<br>' +
             '<h3 class="color-pink">   添加歌单</h3>\n' +
-            '<p>1、同样点击 确定 打开网易云音乐官网</p>\n' +
-            '<p>2、找到一个需要添加的歌单并点击进入</p>\n' +
+            '<p>1、同样先打开网易云音乐官网</p>\n' +
+            '<p>2、找到一个您想要添加的歌单并点击进入</p>\n' +
             '<p>3、此时浏览器地址栏<span class="color-yellow"> playlist?id= </span>后面的数字就是歌单的ID</p>'
         new Dialog(msg);
     }
@@ -533,7 +498,7 @@
             '<br><h4 class="color-yellow">  2018-10-14</h4>' +
             '<p>· 添加对话框</p>' +
             '<p>· 音量 歌曲列表 等使用记录添加到本地存储</p>' +
-            '<p>· 添加歌曲没有版权有通知提示</p>' +
+            '<p>· 添加"歌曲没有版权"的通知提示</p>' +
             '<p>· 当前播放歌曲在所有列表突出显示</p>' +
             '<br><h4 class="color-yellow">  2018-10-15</h4>' +
             '<p>· 优化通知样式</p>' +
@@ -541,10 +506,6 @@
             '<p>· 添加网页图标</p>' +
             '<p>· IE背景模糊失效，修改为纯色</p>'
         new Dialog(msg);
-    }
-
-    Sheet.prototype.showUser = function () {
-
     }
 
 })();

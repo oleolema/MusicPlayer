@@ -7,6 +7,7 @@
         this.pstr;
         this.isended = true;
         this.hdelete = [];
+        this.timerOut;
 
     }
 
@@ -70,11 +71,17 @@
                 self.hdelete[index].click(function () {
                     console.info(index);
                     startback(index);
+                    //设置变量isDeleteing 表示正在删除
+                    self.isDeleteing = true;
+                    clearTimeout(self.timerOut);
+                    self.timerOut = setTimeout(function () {
+                        self.isDeleteing = false;
+                    }, 200);
                     return false;
                 });
 
                 setTimeout(function () {
-                    self.hdelete[index].css(self.pstr, '0px')
+                    self.hdelete[index].css(self.pstr, '0px');
                 }, 20);
             })();
             this.hlist.eq(i).append(this.hdelete[i]);
@@ -82,9 +89,11 @@
         setTimeout(function () {
             //其他地方被点击退出编辑
             window.onclick = function () {
-                self.end(endIndex);
-                endback();
-                window.onclick = null;
+                if (!self.isDeleteing) {    //如果正在删除就不执行
+                    self.end(endIndex);
+                    endback();
+                    window.onclick = null;
+                }
             }
         }, 500);
 
@@ -112,7 +121,7 @@
         }
         this.button.hide();
         this.isended = true;
-        new Toast("已保存",1000);
+        new Toast("已保存", 1000);
     }
 
 })();

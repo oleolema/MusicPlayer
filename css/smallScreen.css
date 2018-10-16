@@ -78,6 +78,7 @@ body {
     color: #fff;
 }
 
+
 /*工具*/
 
 .navi .tools {
@@ -155,6 +156,47 @@ body {
     text-shadow: rgb(63, 68, 70) 3px 3px 10px;
 }
 
+/*歌曲列表标题*/
+
+.music-list-title {
+    padding: 20px;
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+}
+
+.music-title-name {
+    font-size: 30px;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    margin-left: 10px;
+    position: absolute;
+    white-space: nowrap;
+}
+
+.music-title-desc {
+    position: absolute;
+    top: 70px;
+    left: 230px;
+    height: 150px;
+    overflow-y: auto;
+    font-size: 14px;
+}
+
+.music-title-img {
+    height: 200px;
+}
+
+.music-title-bgImg {
+    position: absolute;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: -1;
+    filter: blur(100px);
+    height: 240px;
+}
+
 /*歌列表*/
 
 .musicList li {
@@ -207,7 +249,7 @@ div.listSlide {
     opacity: 0;
 }
 
-.playingList {
+.playingList li {
     transition: 0s;
 }
 
@@ -490,7 +532,7 @@ div.listSlide {
 
 /*对话框*/
 
-.dialogfull {
+.fillScreen {
     position: absolute;
     background: rgba(53, 53, 53, 0.45);
     left: 0px;

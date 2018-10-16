@@ -123,7 +123,7 @@
             $('.search')[0].onscroll = null;
         }
     }
-
+    //滑动到指定位置，element滑动元素，end终止位置，[k滑动速度,越小越快]
     SmallScreen.toScrollTop = function (element, end, k) {
         k = k || 50;
         var speed = Math.ceil((end - element.scrollTop) / k);
