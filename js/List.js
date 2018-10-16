@@ -155,9 +155,11 @@
                 '</span> <span style="float:right">' + list[i].artist +
                 '</span>';
             li.innerHTML = html;
+            //正在播放的歌曲突出显示
             if (music && list[i].id == music.music.musicId) {
                 console.info(music.music.musicId);
                 li.className = "ing";
+                $(li).find('.listNum').attr('class', 'listNumIng').text('');
             }
             self.hList.appendChild(li);
             //前20个列表滑动显示

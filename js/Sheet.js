@@ -102,6 +102,9 @@
             title: "编辑",
             fun: function () { self.deleteSheet(); }
         }, {
+            title: "当前用户",
+            fun: function () { self.showUser(); }
+        }, {
             title: "刷新歌单",
             fun: function () { self.reflushSheet(); }
         }, {
@@ -333,10 +336,20 @@
         var self = this;
         var title = $('<div></div>');
         var name = $('<span>' + sheet.playlist.name + '</span>');
-        var desc = $('<div>' + (sheet.playlist.description == null ? "" : sheet.playlist.description).replace('\n', '<br>') + '</div>');
+        var desc = $('<div>' + (sheet.playlist.description == null ? "" : sheet.playlist.description).replace(/\n/g, '<br>') + '</div>');
         var img = $('<img src="' + sheet.playlist.coverImgUrl + '">');
+        var bgImg = $('<img src="' + sheet.playlist.coverImgUrl + '">');
         img.css({
             "height": "200px"
+        });
+        bgImg.css({
+            "position": "absolute",
+            "width": "100%",
+            "top": "0px",
+            "left": "0px",
+            "z-index": "-1",
+            "filter": "blur(100px)",
+            "height": "240px",
         });
         title.css({
             "padding": "20px",
@@ -358,10 +371,14 @@
             "left": "230px",
             "height": "165px",
             "overflow-y": "auto",
+            "font-size": "14px",
         });
         title.append(img);
         title.append(name);
         title.append(desc);
+        if (!("ActiveXObject" in window)) {     //非IE浏览器
+            title.append(bgImg);
+        }
         $(self.mListObj.hList).append(title);
     }
 

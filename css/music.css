@@ -285,31 +285,6 @@
     top: 0px;
 }
 
-.navigation li {
-    text-align: center;
-    width: 180px;
-    height: 30px;
-    list-style: none;
-    line-height: 30px;
-    transition: all 1s;
-    border: 1px solid rgba(0, 0, 0, 0);
-}
-
-.navigation li:hover {
-    border: 1px solid rgb(255, 123, 145);
-    background: rgba(255, 192, 203, 0.61);
-}
-
-.navigation {
-    display: block;
-}
-
-.navigation::after {
-    content: "";
-    display: block;
-    clear: both;
-}
-
 .mList {
     /* height: 100px; */
     width: 400px;
@@ -405,5 +380,9 @@ li {
 }
 
 ::-webkit-scrollbar-thumb:hover {
+    background-color: #aaaaaa;
+}
+
+::-webkit-scrollbar-thumb:active {
     background-color: white;
 }

@@ -128,7 +128,7 @@ body {
     transition: all 0.5s;
     height: 0px;
     margin: 0px -27.5px;
-    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0);
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.61);
     overflow: hidden;
     background-color: #607D8B;
     border-radius: 5px;

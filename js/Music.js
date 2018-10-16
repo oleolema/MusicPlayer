@@ -54,6 +54,14 @@
             fun: function () {
                 self.listObj.deleteList();
             }
+        }, {
+            title: "清空列表",
+            fun: function () {
+                self.listObj.removeAll();
+                self.listObj.removeHList();
+                self.storeSetting();
+                new Toast("已清空");
+            }
         }]);
 
         //smallScreen.tools   定位到当前歌曲
@@ -89,6 +97,9 @@
     Music.prototype.loadMusic = function (autoPlay) {
         if (autoPlay === undefined) {
             autoPlay = true;
+        }
+        if(this.listObj.list.length == 0){
+            return ;
         }
         var self = this;
 
@@ -412,7 +423,7 @@
         this.audio.src = src;
         this.name.innerHTML = name;
         this.img.style.backgroundImage = 'url(' + img + ')';
- 
+
 
 
     }
@@ -426,15 +437,11 @@
         for (var i = 0; i < hList.length; i++) {
             if (hList[i].className == 'ing') {
                 hList[i].className = '';
-                var num = $(hList[i]).find('.listNumIng');
-                num.attr('class', 'listNum');
-                num.text(i + 1);
+                $(hList[i]).find('.listNumIng').attr('class', 'listNum').text(i + 1);
             }
             if (list[i].id == this.music.musicId && list[i].source == this.music.source) {
                 hList[i].className = 'ing';
-                var num = $(hList[i]).find('.listNum');
-                num.attr('class', 'listNumIng');
-                num.text('');
+                $(hList[i]).find('.listNum').attr('class', 'listNumIng').text('');
             }
         }
     }

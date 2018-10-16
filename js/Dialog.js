@@ -6,7 +6,7 @@
         this.toastObj = new Toast(text, time, function () {
             self.close();
         }).css({
-            background: 'rgba(53, 53, 53, 0.458)'
+            background: 'rgb(96, 125, 139)'
         });
     }
 
