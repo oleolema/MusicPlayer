@@ -432,7 +432,6 @@
     Music.prototype.changListColor = function (listObj) {
         //歌曲列表
         var hList = $(listObj.hList).find('li');      //选取li
-        console.info(hList);
         var list = listObj.list;
         for (var i = 0; i < hList.length; i++) {
             if (hList[i].className == 'ing') {

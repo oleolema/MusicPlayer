@@ -5,10 +5,12 @@
         var self = this;
         this.type = [{
             icon: 'fa fa-refresh',
+            name:"顺序播放",
             fun: function (len) { self.loop(len); }
         },
         {
             icon: 'fa fa-random',
+            name:"随机播放",
             fun: function (len) { self.random(len); }
         }];
         this.typeIndex = 0;            //顺序类型下标
@@ -22,6 +24,7 @@
         this.sequenceButton.click(function () {
             var type = (self.typeIndex + 1) % self.type.length;
             self.setType(type);
+            new Toast(self.type[self.typeIndex].name,1000);
             //存储设置
             music.storeSetting();
 

@@ -109,8 +109,6 @@
             }
             self.isSearching = false;
             load.loaded();
-            var searchElement = $('.search')[0];
-            SmallScreen.toScrollTop(searchElement,searchElement.scrollTop + 50,30);
         });
     }
 
