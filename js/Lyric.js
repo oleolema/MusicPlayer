@@ -170,8 +170,8 @@
         self.lyricL.style.width = width + 'px';
         self.lyricList.style.height = height + 'px';
         self.lyricList.style.width = width + 'px';
-        self.bgPic.style.height = height + 100 + 'px';
-        self.bgPic.style.width = width + 100 + 'px';
+        self.bgPic.style.height = height  + 'px';
+        self.bgPic.style.width = width  + 'px';
         self.bgPic.style.backgroundSize = width + 'px ' + width + 'px';
         self.lyricList.style.marginTop = Music.FLOOR + 'px';
         self.lyricList.style.height = height - Music.FLOOR + 'px';
