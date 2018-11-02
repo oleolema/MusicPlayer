@@ -13,13 +13,12 @@
     Lyric.prototype.lyricToHtml = function () {
         var self = this;
         var list = "";
-        // list += '<li class="lyricno" style="height:'+80+'px"></li>';
         for (var i in self.m.lyric.time) {
-            // console.info(self.m.lyric.time[i]);
-            list += '<li class="lyricno">' + self.m.lyric.time[i] + '</li>'
+            list += '<li class="lyricno">' + self.m.lyric.time[i] +
+                (self.m.lyric.ttime[i] === undefined ? "" : "<br>" + self.m.lyric.ttime[i]) +
+                '</li>'
         }
         if (!self.m.lyric.y[0]) {
-            //list = '<li class="lyricno" style="height:' + (self.lyricL.offsetHeight - 50) + 'px;line-height:' + (self.lyricL.offsetHeight - 50) + 'px;" >' + "没有歌词" + '</li>';
             list = '<li class="lyricno" style="margin-top:200px" >' + "没有歌词" + '</li>';
         }
         self.lyricList.innerHTML = list;
@@ -80,9 +79,8 @@
     };
 
     //歌词解析
-    Lyric.prototype.getLyric = function () {
+    Lyric.prototype.getLyric = function (arrLyric) {
         var self = this;
-        var arrLyric = self.m.lyric.y;
         var lyricObj = {};
         var regexp = /\[\d*:\d*.?\d+\]/g;
         for (var i = 0; i < arrLyric.length; i++) {
@@ -108,11 +106,11 @@
             return a - b;
         });
         //复制到歌词对象中
-        self.m.lyric.time = {};
+        var timeLyric = {};
         for (var i in sortTime) {
-            self.m.lyric.time[sortTime[i]] = lyricObj[sortTime[i]];
+            timeLyric[sortTime[i]] = lyricObj[sortTime[i]];
         }
-        return self.m.lyric.time;
+        return timeLyric;
     }
     //返回顶部
     Lyric.prototype.backTop = function () {
@@ -144,7 +142,8 @@
     //设置歌词
     Lyric.prototype.setLyric = function () {
         var self = this;
-        self.getLyric();
+        self.m.lyric.time = self.getLyric(self.m.lyric.y);        //解析歌词
+        self.m.lyric.ttime = self.getLyric(self.m.lyric.t);        //解析翻译歌词
         self.lyricToHtml();
         self.moveLyric();
         var imgPixel = new ImagePixel();
@@ -155,7 +154,7 @@
                 color = imgPixel.maxColor(200);
                 console.info(color);
                 var rgb = color.substring(1).match(/(\w{2})(\w{2})(\w{2})/);
-                if(rgb[0] > 'aa' && rgb[1] > 'aa' && rgb[2] > 'aa'){        //颜色太白就使用这个颜色
+                if (rgb[0] > 'aa' && rgb[1] > 'aa' && rgb[2] > 'aa') {        //颜色太白就使用这个颜色
                     color = "#aaaaaa";
                 }
                 // if()
