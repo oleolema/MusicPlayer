@@ -145,12 +145,20 @@
             // SmallScreen.toScrollTop(self.hList, self.sheetScrollTop); //还原位置
         });
         this.sMenuObj.showMenu();
+        //按钮隐藏
         self.backButton && self.backButton.hide();
+        self.playAllList && self.playAllList.hide();
 
     }
     //显示歌单中的歌曲
     Sheet.prototype.showMusicList = function () {
         var self = this;
+        //给歌曲列表创建播放全部按钮
+        if(this.playAllList == undefined){
+            this.playAllList = music.smallScreen.addTools('play-circle', function () {
+                music.useSheet(self.nowSheetIndex);
+            }, '播放全部');
+        }
         //给歌曲列表创建返回按钮
         if (this.backButton == undefined) {
             this.backButton = music.smallScreen.addTools('arrow-circle-left', function () {
@@ -158,6 +166,7 @@
                 self.backButton.hide();
             }, '返回');
         }
+        this.playAllList.show();
         this.backButton.show();
         this.isSheet = false;
         this.sheetScrollTop = this.hList.scrollTop;   //记录滑动位置
