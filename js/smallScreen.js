@@ -89,18 +89,13 @@
                 });
             }
         }
+        music.sheetObj.showSheet();
         if (n == 0) {
             music.menuObj.showMenu();
             music.tool.show();
             // SmallScreen.toScrollTop(self.content[0], $('.musicList li.ing')[0].offsetTop - innerHeight * 0.382);    //定位到当前播放
         } else {
             music.tool.hide();
-        }
-        if (n == 1) {
-            // music.sheetObj.sMenuObj.showMenu();
-            music.sheetObj.showSheet();
-        } else {
-            music.sheetObj.backButton && music.sheetObj.backButton.hide();
         }
         if (n == 2) {
             //延迟 绑定滚动事件 和 聚焦
