@@ -269,7 +269,7 @@
 
 .lyricList li {
     font-size: 14px;
-    height: 40px;
+    height: 20px;
     width: 400px;
     position: absolute;
     left: 0px;
@@ -280,7 +280,7 @@
 }
 
 .lyricshow1 {
-    transform: translate(0px, -40px);
+    transform: translate(0px, -20px);
 }
 
 .lyricshow2 {
@@ -288,7 +288,7 @@
 }
 
 .lyricshow3 {
-    transform: translate(0px, 40px);
+    transform: translate(0px, 20px);
 }
 
 .mList {

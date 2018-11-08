@@ -28,8 +28,9 @@
         //歌词
         this.lyric = this.player.getElementsByClassName('lyric')[0];
         this.lyricList = this.lyric.getElementsByClassName('lyricList')[0];
-        this.lyrica = this.lyric.getElementsByClassName('lyricli1')[0];
-        this.lyricb = this.lyric.getElementsByClassName('lyricli2')[0];
+        this.lyrica = $('li.lyricshow1');
+        this.lyricb = $('li.lyricshow2');
+        this.lyricc = $('li.lyricshow3');
 
         //列表
         this.playingList = document.getElementsByClassName('playingList')[0];
@@ -160,9 +161,9 @@
     Music.prototype.moveLyric = function () {
         var self = this;
         var pre = self.lyricObj.m.lyric.index;
-        var a = $('li.lyricshow1');
-        var b = $('li.lyricshow2');
-        var c = $('li.lyricshow3');
+        var a = this.lyrica;
+        var b = this.lyricb;
+        var c = this.lyricc;
         if (!this.m.lyric.y[0] && a.html() != "没有歌词") {
             a.html("没有歌词");      //显示歌词
             b.html("没有歌词");
@@ -173,7 +174,7 @@
         if (pre == this.m.lyric.preTime) {
             return;
         }
-        
+
         a.html(that + "");      //显示歌词
         c.html("");      //显示歌词
         a.attr('class', 'lyricshow2');
