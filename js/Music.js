@@ -98,8 +98,8 @@
         if (autoPlay === undefined) {
             autoPlay = true;
         }
-        if(this.listObj.list.length == 0){
-            return ;
+        if (this.listObj.list.length == 0) {
+            return;
         }
         var self = this;
 
@@ -160,28 +160,27 @@
     Music.prototype.moveLyric = function () {
         var self = this;
         var pre = self.lyricObj.m.lyric.index;
-        if (!this.m.lyric.y[0]) {
-            this.lyrica.innerHTML = "没有歌词";
-            this.lyricb.innerHTML = "没有歌词";
+        var a = $('li.lyricshow1');
+        var b = $('li.lyricshow2');
+        var c = $('li.lyricshow3');
+        if (!this.m.lyric.y[0] && a.html() != "没有歌词") {
+            a.html("没有歌词");      //显示歌词
+            b.html("没有歌词");
+            c.html("没有歌词");
             return;
         }
         that = this.m.lyric.time[Object.keys(self.m.lyric.time)[pre]];
-        if (this.lyrica.offsetTop < 0 && pre != this.m.lyric.preTime) {        //a在上时
-            //移动到上面
-            this.lyricb.style.top = -40 + 'px';     //b上去
-            //两个元素一起滑下
-            this.lyrica.innerHTML = that + "";      //显示歌词
-            this.m.lyric.preTime = pre;             //储存时间
-            this.lyrica.style.top = 0 + 'px';       //a下来
+        if (pre == this.m.lyric.preTime) {
+            return;
         }
-        else if (this.lyricb.offsetTop < 0 && pre != this.m.lyric.preTime) {        //b在上时
-            //移动到上面
-            this.lyrica.style.top = -40 + 'px';     //a上去
-            //两个元素一起滑下
-            this.lyricb.innerHTML = that + "";
-            this.m.lyric.preTime = pre;
-            this.lyricb.style.top = 0 + 'px';       //b下来
-        }
+        
+        a.html(that + "");      //显示歌词
+        c.html("");      //显示歌词
+        a.attr('class', 'lyricshow2');
+        b.attr('class', 'lyricshow3');
+        c.attr('class', 'lyricshow1');
+
+        this.m.lyric.preTime = pre;
         return;
 
     }
@@ -525,9 +524,11 @@
 
         //歌词
         this.lyric.style.width = width + 'px';
-        this.lyrica.style.width = width + 'px';
-        this.lyricb.style.width = width + 'px';
         this.lyric.style.top = height - 30 + 'px';
+        var lyrics = $('.lyricList li');
+        for (var i = 0; i < lyrics.length; i++) {
+            lyrics.eq(i).css('width', width);
+        }
 
     }
 }());
