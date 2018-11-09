@@ -5,7 +5,7 @@
         this.count = 20;
         this.source;
         this.pages = 1;
-        this.name;
+        this.name = "";
         this.picId;
         this.lyricId;
         this.musicId;

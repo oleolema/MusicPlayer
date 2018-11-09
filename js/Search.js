@@ -18,24 +18,12 @@
         var self = this;
         //搜索按钮
         this.sButton.onclick = function () {
-            var musicObj = music;
-            musicObj.music.source = self.searchSource;
-            musicObj.music.name = self.searchInput.value;
-            if (musicObj.music.name == "") {
-                return;
-            }
             self.searchPage = 1;
             self.smusic();
         }
         //搜索输入框
         this.searchInput.onkeydown = function (e) {
-            var musicObj = music;
             if (e.key == "Enter") {
-                musicObj.music.source = self.searchSource;
-                musicObj.music.name = this.value;
-                if (this.value == "") {
-                    return;
-                }
                 self.searchPage = 1;
                 self.smusic();
             }
@@ -50,6 +38,8 @@
                     rgChild.eq(i).children(0).attr('check', 'true');
                     self.searchSource = rgChild.eq(i).children(0).attr('source');
                     radiobg.css('left', rgChild.eq(i).children(0)[0].offsetLeft + 'px');        //滑动
+                    self.searchPage = 1;
+                    self.smusic();
                     console.info(rgChild.eq(i).children(0)[0].offsetLeft);
                 } else {
                     rgChild.eq(i).children(0).attr('check', 'false');
@@ -71,11 +61,17 @@
     //搜索音乐
     Search.prototype.smusic = function () {
         var self = this;
+        var musicObj = music;
+        musicObj.music.source = self.searchSource;
+        musicObj.music.name = self.searchInput.value;
         if (this.isSearching) {
             return;
         }
+        if (musicObj.music.name == "") {
+            return;
+        }
         var load = new Loading($('.main'));
-        var musicObj = music;
+
         console.info(self.searchPage);
         if (self.searchPage < 0) {      //搜索到底直接返回
             return;
