@@ -70,7 +70,7 @@
         if (musicObj.music.name == "") {
             return;
         }
-        var load = new Loading($('.main'));
+        var load = new Loading($('.search'));
 
         console.info(self.searchPage);
         if (self.searchPage < 0) {      //搜索到底直接返回

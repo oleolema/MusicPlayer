@@ -313,7 +313,7 @@
                     //如果这列表没有歌
                     if (self.sheetList[index].playlist.tracks == null) {
 
-                        var load = new Loading($('.main'));
+                        var load = new Loading($('.sheetMusicList'));
                         load.loading();     //开始加载
                         self.getSheetWithId(self.sheetList[index].playlist.id, index, function (index) {
                             //解析歌单并写入html
