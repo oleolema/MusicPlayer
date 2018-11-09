@@ -159,9 +159,9 @@
     Music.prototype.moveLyric = function () {
         var self = this;
         var pre = self.lyricObj.m.lyric.index;
-        var a = $(this.lyricList).find('li.lyricshow1');
-        var b = $(this.lyricList).find('li.lyricshow2');
-        var c = $(this.lyricList).find('li.lyricshow3');
+        var a = $('li.lyricshow1');
+        var b = $('li.lyricshow2');
+        var c = $('li.lyricshow3');
         if (!this.m.lyric.y[0] && a.html() != "没有歌词") {
             a.html("没有歌词");      //显示歌词
             b.html("没有歌词");
