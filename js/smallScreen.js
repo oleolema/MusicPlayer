@@ -76,14 +76,14 @@
         for (var i = 0; i < self.content.length; i++) {
             if (i == n) {
                 console.info('down');
-                this.content.eq(i).slideDown(SmallScreen.SDELAY*1);
+                // this.content.eq(i).slideDown(SmallScreen.SDELAY * 1);
+                this.content.eq(i).fadeIn(SmallScreen.SDELAY * 0.6);
                 this.title.eq(i).css({
                     background: 'rgba(33, 149, 243, 0.836)'
                 });
             }
             else {
-                this.content.eq(i).slideUp(SmallScreen.SDELAY*1);
-                // this.content.eq(i).hide();
+                this.content.eq(i).hide();
                 this.title.eq(i).css({
                     background: 'rgba(33, 149, 243, 0)'
                 });
@@ -109,7 +109,7 @@
                 if (music.searchObj.sListObj.list.length == 0) {
                     $('.searchInput')[0].focus();
                 }
-            }, SmallScreen.SDELAY + 100);
+            }, SmallScreen.SDELAY * 0.6);
             self.menuObj.showMenu();
         } else {
             //非搜索界面取消滚动事件和聚焦

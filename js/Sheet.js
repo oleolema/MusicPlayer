@@ -13,8 +13,6 @@
         this.sheetScrollTop;
         //设置滑动元素
         this.mListObj.scrollElement = this.hList;
-        //创建菜单
-        this.createMenu();
 
         //获取本地ID
         this.getLocalId();
@@ -22,6 +20,11 @@
         //创建删除图案
         this.deleteObj = new Delete();
         this.deleteObj.setIcon(2, 50);
+    }
+
+    Sheet.prototype.init = function () {
+        //创建菜单
+        this.createMenu();
     }
 
     Sheet.prototype.deleteSheet = function () {
@@ -110,7 +113,7 @@
         }, {
             title: "设置用户ID",
             fun: function () { self.addUser(); }
-        }, {
+        },{
             title: "帮助",
             fun: function () { self.useHelp(); }
         }, {
@@ -139,11 +142,10 @@
         this.isSheet = true;
         var self = this;
 
-        $(this.hmList).slideUp(SmallScreen.SDELAY);
-
-        $(this.hpList).slideDown(SmallScreen.SDELAY, function () {
-            // SmallScreen.toScrollTop(self.hList, self.sheetScrollTop); //还原位置
-        });
+        // $(this.hmList).slideUp(SmallScreen.SDELAY);
+        $(this.hmList).hide();
+        $(this.hpList).fadeIn(SmallScreen.SDELAY - 200);
+        // $(this.hpList).slideDown(SmallScreen.SDELAY);
         this.sMenuObj.showMenu();
         //按钮隐藏
         self.backButton && self.backButton.hide();
@@ -154,7 +156,7 @@
     Sheet.prototype.showMusicList = function () {
         var self = this;
         //给歌曲列表创建播放全部按钮
-        if(this.playAllList == undefined){
+        if (this.playAllList == undefined) {
             this.playAllList = music.smallScreen.addTools('play-circle', function () {
                 music.useSheet(self.nowSheetIndex);
             }, '播放全部');
@@ -513,7 +515,7 @@
             '<p>· 优化通知样式</p>' +
             '<p>· 修复非chrome浏览器显示异常</p>' +
             '<p>· 添加网页图标</p>' +
-            '<p>· IE背景模糊失效，修改为纯色</p>'+
+            '<p>· IE背景模糊失效，修改为纯色</p>' +
             '<br><h4 class="color-yellow">  2018-11-2</h4>' +
             '<p>· 添加歌词翻译</p>';
         new Dialog(msg);

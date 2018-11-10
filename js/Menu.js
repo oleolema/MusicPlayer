@@ -41,6 +41,10 @@
         this.parent.append(this.hList);
     }
 
+    Menu.prototype.setList = function (index, title) {
+        this.hList.children(index).text(title);
+    }
+
     Menu.prototype.setMenu = function (list) {
         this.hList.children().remove();
         if (!list) {
@@ -75,7 +79,7 @@
     }
     Menu.prototype.sildeUp = function (e) {
         var self = this;
-        
+
         self.icon.css({
             transform: 'rotate(0deg)',
             color: 'rgba(248, 248, 248, 0.527)'

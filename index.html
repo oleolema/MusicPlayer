@@ -155,7 +155,9 @@
 <script>
 
     var music = new Music();
+    music.sheetObj.init();
     music.smallScreen.init();
+
     music.sheetObj.getAllOfSheet(function (index) {
         if (index == 0) {
             // music.useSheet(0, false);

@@ -227,7 +227,8 @@
             volume: this.audio.volume,
             sequenceObj_typeIndex: this.sequenceObj.typeIndex,
             sequenceObj_now: this.sequenceObj.now(),
-            listObj_list: this.listObj.list
+            listObj_list: this.listObj.list,
+            isAnimation: this.isAnimation
         }
         localStorage['setting'] = JSON.stringify(this.setting);
     }
@@ -240,6 +241,7 @@
         }
         this.setting = JSON.parse(setting);
         //还原数据
+        this.isAnimation = this.setting['isAnimation'];
         this.setVolume(this.setting['volume']);
         this.sequenceObj.setType(this.setting['sequenceObj_typeIndex']);
         this.useSheetWithList(this.setting['listObj_list'], false);
