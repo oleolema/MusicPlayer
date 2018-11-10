@@ -214,7 +214,7 @@
 
     Music.prototype.refresh = function () {
         var self = this;
-        self.progressTime.innerHTML = Music.addZero(new Date(self.audio.currentTime * 1000).getMinutes()) + ':' + Music.addZero(new Date(self.audio.currentTime * 1000).getSeconds());
+        self.progressTime.innerText = Music.addZero(new Date(self.audio.currentTime * 1000).getMinutes()) + ':' + Music.addZero(new Date(self.audio.currentTime * 1000).getSeconds());
         //歌词滚动
         self.lyricObj.moveLyric();
         if (!this.smallScreen.isFull) {
@@ -469,7 +469,7 @@
         this.timer2;
         clearInterval(this.timer1);
         clearInterval(this.timer2);
-        this.timer1 = setInterval(function () { self.refresh(); }, 20);
+        this.timer1 = setInterval(function () { self.refresh(); }, 100);
         //进度条定时器刷新时间较慢，因为太快了在滑动或点击时容易卡顿
         this.timer2 = setInterval(function () {
             self.progressLen = self.progressAll.offsetWidth - 6;        //进度条长度

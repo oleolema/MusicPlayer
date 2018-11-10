@@ -129,12 +129,7 @@
             return null;
         }
         var len = list.length;
-        //有滑动元素就设置滑动效果
-        if (!self.sildebg && self.scrollElement) {
-            //先添加一个滑动背景
-            self.sildebg = $('<div class="listSlide" style="width:100%"   ></div>');
-            $(self.hList).before(self.sildebg);
-        }
+
 
         //创建新列表
         for (var i = start; i < len; i++) {
@@ -207,5 +202,14 @@
                 }
             }());
         }
+        //有滑动元素就设置滑动效果
+        setTimeout(function () {
+            if (!self.sildebg && self.scrollElement) {
+                //先添加一个滑动背景
+                self.sildebg = $('<div class="listSlide" style="width:100%"   ></div>');
+                $(self.hList).after(self.sildebg);
+            }
+        }, 20);
+
     }
 })();
