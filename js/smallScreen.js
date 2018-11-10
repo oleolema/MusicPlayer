@@ -5,7 +5,8 @@
         this.musicImg = $('.musicImg');
         this.smLyric = $('.lyric');
         this.navi = $('.naviList');
-        this.title = $('.naviList').children();
+        this.title = $('.naviList').find('li');
+        this.titleBgColor = $('.naviList').find('.naviList-li-bgcolor');
         this.content = $('.main').children();
         this.floatBoll = $('.floatBoll');
         this.contentScrollTop = {};
@@ -75,18 +76,12 @@
         self.floatBoll.fadeOut(100);
         for (var i = 0; i < self.content.length; i++) {
             if (i == n) {
-                console.info('down');
-                // this.content.eq(i).slideDown(SmallScreen.SDELAY * 1);
                 this.content.eq(i).fadeIn(SmallScreen.SDELAY * 0.6);
-                this.title.eq(i).css({
-                    background: 'rgba(33, 149, 243, 0.836)'
-                });
+                console.info(i);
+                this.titleBgColor.attr("class", "naviList-li-bgcolor naviList-li-index" + i);
             }
             else {
                 this.content.eq(i).hide();
-                this.title.eq(i).css({
-                    background: 'rgba(33, 149, 243, 0)'
-                });
             }
         }
         music.sheetObj.showSheet();
@@ -113,7 +108,6 @@
             self.menuObj.showMenu();
         } else {
             //非搜索界面取消滚动事件和聚焦
-            console.info(2);
             $('.searchInput')[0].blur();
             $('.search')[0].onscroll = null;
         }
@@ -168,6 +162,9 @@
     SmallScreen.prototype.toSmall = function (width, height) {
         var self = this;
         self.isFull = false;
+        // self.full.css({
+        //     "transform": 'translate(0px,' + Music.FLOOR + 'px)'
+        // });
         self.full.css({
             "height": Music.FLOOR + "px",
             "width": width + "px"
@@ -191,6 +188,9 @@
             "height": 0 + "px",
             "width": width + "px"
         });
+        // self.full.css({
+        //     "transform": 'translate(0px,' + height + 'px)'
+        // });
         self.smLyric.css("height", "0px");
         downIconShow();         //切换点击图标
         setTimeout(function () {
