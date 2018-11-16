@@ -107,6 +107,7 @@
             }
             return;
         }
+        //正常播放
         self.preMusicId = self.listObj.list[now].id;
 
         //存储设置
@@ -115,6 +116,8 @@
             self.loading.className = "loading";
         }, 500);
         console.info(now);
+        //清除残留歌词 
+        this.clearLyric();
 
 
         //设置歌曲id
@@ -150,8 +153,10 @@
         });
     }
 
-
-
+    //清除歌词
+    Music.prototype.clearLyric = function(){
+        $('li.lyricshow2').html("");
+    }
     //歌词显示
     Music.prototype.moveLyric = function () {
         var self = this;
