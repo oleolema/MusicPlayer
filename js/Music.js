@@ -81,9 +81,6 @@
         this.sequenceObj = new Sequence();
         //设置信息
         this.setting;
-
-        //初始化
-        this.init();
         //设置大小
         this.dynamicSize();
 
@@ -278,26 +275,6 @@
 
 
         //音量
-        this.setVolume = function (volume) {
-            volume = volume < 0 ? 0 : volume;
-            volume = volume > 1 ? 1 : volume;
-            //音量条移动
-            var x = volume * volumeLen;
-            volumeBoll.css('left', x + 'px');
-            //图标改变
-            if (volume == 0) {          //音量为0使用这个图标
-                self.volume.find('i').attr('class', 'fa fa-volume-off volumeButton');
-            }
-            else if (volume < 0.5) {
-                self.volume.find('i').attr('class', 'fa fa-volume-down volumeButton');
-            }
-            else {
-                self.volume.find('i').attr('class', 'fa fa-volume-up volumeButton');
-            }
-            self.audio.volume = volume;
-
-        }
-
         var volumeLine = this.volume.find('.volumeLine');
         var volumeBoll = this.volume.find('.volumeBoll');
         var volumeShell = this.volume.find('.volumeShell');
@@ -348,6 +325,27 @@
             });
             return false;
         });
+
+        this.setVolume = function (volume) {
+            volume = volume < 0 ? 0 : volume;
+            volume = volume > 1 ? 1 : volume;
+            //音量条移动
+            var x = volume * volumeLen;
+            volumeBoll.css('left', x + 'px');
+            //图标改变
+            if (volume == 0) {          //音量为0使用这个图标
+                self.volume.find('i').attr('class', 'fa fa-volume-off volumeButton');
+            }
+            else if (volume < 0.5) {
+                self.volume.find('i').attr('class', 'fa fa-volume-down volumeButton');
+            }
+            else {
+                self.volume.find('i').attr('class', 'fa fa-volume-up volumeButton');
+            }
+            self.audio.volume = volume;
+
+        }
+        this.setVolume(0.3);
 
         //进度条
         this.progress.onclick = function (e) {
