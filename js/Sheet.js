@@ -113,7 +113,7 @@
         }, {
             title: "设置用户ID",
             fun: function () { self.addUser(); }
-        },{
+        }, {
             title: "帮助",
             fun: function () { self.useHelp(); }
         }, {
@@ -517,7 +517,11 @@
             '<p>· 添加网页图标</p>' +
             '<p>· IE背景模糊失效，修改为纯色</p>' +
             '<br><h4 class="color-yellow">  2018-11-2</h4>' +
-            '<p>· 添加歌词翻译</p>';
+            '<p>· 添加歌词翻译</p>' +
+            '<br><h4 class="color-yellow">  2018-11-16</h4>' +
+            '<p>· 优化列表出现动画，更加流畅</p>' +
+            '<p>· 其他杂项</p>' +
+            '';
         new Dialog(msg);
     }
 
