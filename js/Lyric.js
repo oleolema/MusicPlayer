@@ -2,7 +2,7 @@
     var Lyric = window.Lyric = function () {
         this.audio = document.getElementsByClassName("myaudio")[0];
         this.lyricL = document.getElementsByClassName("myLyric")[0];
-        this.bgPic = document.getElementsByClassName("lyricBgPic")[0];
+        this.bgPic = $('.lyricBgPic');
         this.lyricList = document.getElementsByClassName("myLyricList")[0];
         this.wheel = {};
         this.m = [];
@@ -148,7 +148,7 @@
         self.moveLyric();
         var imgPixel = new ImagePixel();
         if (!("ActiveXObject" in window)) {
-            self.bgPic.style.backgroundImage = 'url(' + self.m.pic.url + ')';
+            self.bgPic.css('background-image', 'url(' + self.m.pic.url + ')');
         } else {            //IE不支持高斯模糊blur  ，使用下面纯色
             imgPixel.loadImg(self.m.pic.url, function () {
                 color = imgPixel.maxColor(200);
@@ -158,7 +158,7 @@
                     color = "#aaaaaa";
                 }
                 // if()
-                self.bgPic.style.background = color;
+                self.bgPic.css('background-color', color);
             });
         }
 
@@ -170,10 +170,14 @@
         self.lyricL.style.width = width + 'px';
         self.lyricList.style.height = height + 'px';
         self.lyricList.style.width = width + 'px';
-        self.bgPic.style.height = height + 100 + 'px';
-        self.bgPic.style.width = width + 100 + 'px';
-        self.bgPic.style.backgroundSize = (width + 100) + 'px ' + (width + 100) + 'px';
+
         self.lyricList.style.marginTop = Music.FLOOR + 'px';
         self.lyricList.style.height = height - Music.FLOOR + 'px';
+        self.bgPic.css({
+            'height': height + 100 + 'px',
+            'width': width + 100 + 'px',
+            'backgroundSize': (width + 100) + 'px ' + (width + 100) + 'px',
+        });
+
     }
 }());

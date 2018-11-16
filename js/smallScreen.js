@@ -151,6 +151,11 @@
             "width": innerWidth,
             "height": innerHeight - 57 - Music.FLOOR + "px"
         });
+        //满屏
+        self.full.css({
+            "height": height + "px",
+            "width": width + "px"
+        });
         //返回顶部
         self.floatBoll.css({
             right: '50px',
@@ -163,7 +168,7 @@
         var self = this;
         self.isFull = false;
         // self.full.css({
-        //     "transform": 'translate(0px,' + Music.FLOOR + 'px)'
+        //     "transform": 'translate(0px,' + 0 + 'px)'
         // });
         self.full.css({
             "height": Music.FLOOR + "px",
@@ -189,7 +194,7 @@
             "width": width + "px"
         });
         // self.full.css({
-        //     "transform": 'translate(0px,' + height + 'px)'
+        //     "transform": 'translate(0px,' + '-' + (height - Music.FLOOR) + 'px)'
         // });
         self.smLyric.css("height", "0px");
         downIconShow();         //切换点击图标

@@ -160,23 +160,23 @@
             //前20个列表动画效果
             if (animation && i < 20 + start) {
                 //效果1
-                li.style.height = '20px';
-                (function () {
-                    var templi = li
-                    setTimeout(function () {
-                        templi.style.height = '50px';
-                    }, 15);
-                }());
+                // li.style.height = '20px';
+                // (function () {
+                //     var templi = li
+                //     setTimeout(function () {
+                //         templi.style.height = '50px';
+                //     }, 15);
+                // }());
 
                 //效果2
-                // li.style.transform = 'scaleX(.5)';
-                // (function () {
-                //     var templi = li;
-                //     var time = i;
-                //     setTimeout(function () {
-                //         templi.style.transform = 'scaleX(1)';
-                //     }, 15 + i * 15);
-                // }());
+                li.style.transform = 'scale3d(0,0,0)';
+                (function () {
+                    var templi = li;
+                    var time = i;
+                    setTimeout(function () {
+                        templi.style.transform = 'scale3d(1,1,1)';
+                    }, 15 + time * 15);
+                }());
             }
             //给每个列表添加事件
             (function () {
