@@ -116,10 +116,6 @@
             self.loading.className = "loading";
         }, 500);
         console.info(now);
-        //清除残留歌词 
-        this.clearLyric();
-
-
         //设置歌曲id
         self.music.musicId = self.listObj.list[now].id;
         self.music.picId = self.listObj.list[now].pic_id;
@@ -146,6 +142,8 @@
                 self.loading.className = "loaded";
             }
             self.setMusic(m.music.url, self.listObj.list[now].name + ' - ' + self.listObj.list[now].artist, m.pic.url);       //设置音频，图片
+            //清除残留歌词 
+            self.clearLyric();
             self.lyricObj.m = self.m;               //传入歌词数据
             self.lyricObj.setLyric();               //设置大屏歌词
             self.lyricObj.backTop();                //返回歌词顶部
@@ -154,7 +152,7 @@
     }
 
     //清除歌词
-    Music.prototype.clearLyric = function(){
+    Music.prototype.clearLyric = function () {
         $('li.lyricshow2').html("");
     }
     //歌词显示
