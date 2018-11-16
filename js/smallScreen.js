@@ -151,11 +151,11 @@
             "width": innerWidth,
             "height": innerHeight - 57 - Music.FLOOR + "px"
         });
-        //满屏
-        self.full.css({
-            "height": height + "px",
-            "width": width + "px"
-        });
+        // //满屏
+        // self.full.css({
+        //     "height": height + "px",
+        //     "width": width + "px"
+        // });
         //返回顶部
         self.floatBoll.css({
             right: '50px',
