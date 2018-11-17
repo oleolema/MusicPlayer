@@ -272,6 +272,7 @@
         //音频加载错误
         this.audio.onerror = function () {
             console.error("音频加载失败");
+            new Toast("音乐链接已失效");
         }
 
         //音频加载中
