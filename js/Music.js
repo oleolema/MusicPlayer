@@ -52,6 +52,7 @@
             title: "编辑",
             fun: function () {
                 self.listObj.deleteList();
+                self.storeSetting();
             }
         }, {
             title: "清空列表",
