@@ -51,8 +51,10 @@
         this.menuObj = new Menu([{
             title: "编辑",
             fun: function () {
-                self.listObj.deleteList();
-                self.storeSetting();
+                self.listObj.deleteList(function () {
+                    self.storeSetting();
+                });
+
             }
         }, {
             title: "清空列表",

@@ -11,7 +11,7 @@
 
     }
 
-    List.prototype.deleteList = function () {
+    List.prototype.deleteList = function (callback) {
         var self = this;
         var now = music.sequenceObj.now();          //获取当前播放位置
         console.info(now);
@@ -50,6 +50,7 @@
                 music.sequenceObj.setLen(self.list.length);      //重新设置长度（列表发生改变后都应该调用）
                 music.sequenceObj.setNow(now);
                 music.loadMusic(!music.audio.paused);
+                callback && callback();
             });
     }
 
