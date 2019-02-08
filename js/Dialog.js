@@ -10,6 +10,10 @@
         });
     }
 
+    Dialog.prototype.css = function(c){
+        this.toastObj.css(c);
+    }
+
     Dialog.prototype.show = function () {
         var self = this;
         this.fill = $('<div class="fillScreen"></div>');

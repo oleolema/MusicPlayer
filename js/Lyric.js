@@ -174,8 +174,8 @@
         self.lyricList.style.marginTop = Music.FLOOR + 'px';
         self.lyricList.style.height = height - Music.FLOOR + 'px';
         self.bgPic.css({
-            'height': height + 100 + 'px',
-            'width': width + 100 + 'px',
+            'height': height + 50 + 'px',
+            'width': width + 50 + 'px',
             'backgroundSize': (width + 100) + 'px ' + (width + 100) + 'px',
         });
 

@@ -102,6 +102,9 @@
         //Menu
         //歌单菜单
         this.sMenuObj = new Menu([{
+            title:"赞赏",
+            fun:function(){new Pay().show();}
+        }, {
             title: "编辑",
             fun: function () { self.deleteSheet(); }
         }, {
