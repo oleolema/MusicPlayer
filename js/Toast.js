@@ -29,7 +29,6 @@
 
         this.toast.append(this.icon);
         $('body').append(this.toast);
-        $('html').css("overflow-y", "auto");
         $('body').css("overflow-y", "auto");
         var line = this.toast.outerWidth() / innerWidth;
         if (line > 1) {
@@ -62,7 +61,6 @@
             self.toast.remove();
         }, 618);
         $('body').css("overflow-y", "hidden");
-        $('html').css("overflow-y", "hidden");
     }
 
 })();
