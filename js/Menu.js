@@ -52,7 +52,7 @@
         }
         for (var i = 0; i < list.length; i++) {
             var li = $('<li></li>')
-            li.text(list[i].title);
+            li.html(list[i].title);
             (function () {
                 var index = i;
                 li.click(function () {

@@ -102,8 +102,8 @@
         //Menu
         //歌单菜单
         this.sMenuObj = new Menu([{
-            title:"赞赏",
-            fun:function(){new Pay().show();}
+            title: "赞赏",
+            fun: function () { new Pay().show(); }
         }, {
             title: "编辑",
             fun: function () { self.deleteSheet(); }
@@ -130,6 +130,9 @@
                     location.reload();
                 }
             }
+        }, {
+            title: '<a href="mailto:1075056431@qq.com?Subject=FTSMusicPlayer的反馈" target="_top" style="color:#fff;cursor:default;text-decoration: none;">反馈</a>',
+            fun: function () { }
         }]);
         //歌单中歌曲菜单
         this.mMenuObj = new Menu([{
