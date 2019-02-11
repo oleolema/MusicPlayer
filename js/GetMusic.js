@@ -51,6 +51,13 @@
         this.http("https://y.xuelg.com/api.php?callback=yue107&types=url&id=" + this.musicId + "&source=" + this.source, function () {
             music.music = self.back;
             self.getLyric(function () {
+                console.info(self.back);
+                if (self.back.lyric == undefined) {
+                    self.back = {
+                        lyric: "",
+                        tlyric: ""
+                    };
+                }
                 music.lyric = {
                     y: self.back.lyric.split('\n'),
                     t: self.back.tlyric.split('\n'),
