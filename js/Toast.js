@@ -1,10 +1,21 @@
 (function () {
     window.Toast = function (text, time, close) {
+        this.makeText(text, time, close);
+    }
+
+    Toast.prototype.makeText = function (text, time, close) {
         this.text = text;
         this.time = time || 2000;
         this.otherClose = close;
-        this.show();
+        text !== undefined && this.show();
+        return this;
     }
+
+    Toast.prototype.setClose = function(close){
+        this.otherClose = close;
+        return ;
+    }
+
 
     Toast.prototype.css = function (c) {
         this.toast.css(c);

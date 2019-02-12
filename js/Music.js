@@ -275,7 +275,14 @@
         //音频加载错误
         this.audio.onerror = function () {
             console.error("音频加载失败");
-            new Toast("音乐链接已失效");
+            var toast = new Toast();
+            toast.makeText(`音乐链接已失效 <a href="javascript:
+            music.preMusicId=-1;
+            music.loadMusic();      
+            toast.close();
+            ">重新加载</a>`, 999999).css({
+                background: "#df0fbf"
+            }).show();
         }
 
         //音频加载中
