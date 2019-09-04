@@ -45,11 +45,12 @@ Chrome浏览器打开效果图：
 
 ### 3,  使用方法
 打开网址，根据自己的目的，选取相关的功能，推荐优先看“帮助“功能，可以使用户更好的理解如何使用
+
 声明：所有操作必须是在用户设备连接网络的情况下进行。所有涉及ID信息，只支持来自网易云音乐
 
 ## 三，	截图欣赏
 ### 1.播放列表
- ![](http://ss1.sinaimg.cn/large/005LtChLgy1g6ngwvblpvj30fe08nmyr.jpg)
+![](http://ss1.sinaimg.cn/large/005LtChLgy1g6nh0m40j7j30fe08nmyr.jpg)
 ### 2.歌单列表
  ![](http://ss1.sinaimg.cn/large/005LtChLgy1g6ngwyx5dzj30fe08n79c.jpg)
 ### 3.歌单歌曲
