@@ -1,5 +1,7 @@
 # MusicPlayer
-***
+
+一款清爽、简洁、的多平台播放器
+
 [查看效果](https://oleolema.github.io/MusicPlayer/)
 
 注意：强烈推荐使用chrome浏览器打开，因为该网页使用chrome浏览器测试开发，网页完成后在其它浏览器测试后发现，动画效果会有卡顿，但不影响正常使用，其他测试浏览器包括（FireFox，IE11，Edge，Opera，360）,移动端Android浏览器也有测试，可以正常使用，但是显示效果不佳。
