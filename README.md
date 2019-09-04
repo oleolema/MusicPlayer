@@ -1,6 +1,6 @@
 # MusicPlayer
 
-一款清爽、简洁、的多平台播放器
+一款清爽、简洁、的多平台音乐播放器
 
 [查看效果](https://oleolema.github.io/MusicPlayer/)
 
