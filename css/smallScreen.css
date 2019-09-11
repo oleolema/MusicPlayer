@@ -460,6 +460,7 @@ div.listSlide {
     z-index: -10;
     background-color: rgba(16, 89, 247, 0.651);
     transition: left 0.5s;
+    top: 0px;
 }
 
 .radioGroup .radio7 {
