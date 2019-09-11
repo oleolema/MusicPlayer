@@ -10,7 +10,7 @@
         this.toastObj.makeText(text, time, function () {
             self.close();
         }).css({
-            background: '#000000c4'
+            background: 'rgba(0, 0, 0, 0.77)'
         }).show();
     }
 
