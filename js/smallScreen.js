@@ -96,7 +96,7 @@
             //延迟 绑定滚动事件 和 聚焦
             setTimeout(function () {
                 $('.search')[0].onscroll = function () {
-                    if (this.offsetHeight + this.scrollTop >= this.scrollHeight) {
+                    if (this.offsetHeight + this.scrollTop + 10 >= this.scrollHeight) {
                         music.searchObj.smusic();
                     }
                 };
