@@ -41,7 +41,7 @@
                 }
                 if (confirm("确认删除歌单<" + self.sheetList[index].playlist.name + ">？")) {
                     child.eq(index).hide(500);
-                    self.id[index] = -1;        //标记要删除的id
+                    self.id[index] = -1; //标记要删除的id
                 }
             },
             function () {
@@ -53,7 +53,7 @@
                     }
                 }
                 self.id = temp;
-                localStorage['id'] = self.id;       //保存
+                localStorage['id'] = self.id; //保存
             },
             self.id.length
         );
@@ -66,7 +66,7 @@
     }
     Sheet.prototype.getLocalId = function () {
         var id = localStorage['id'];
-        if (id != undefined) {//获取到了
+        if (id != undefined) { //获取到了
             if (id == "") {
                 this.id = [];
             } else {
@@ -103,25 +103,34 @@
         //歌单菜单
         this.sMenuObj = new Menu([{
             title: "赞赏",
-            fun: function () { new Pay().show(); }
+            fun: function () {
+                new Pay().show();
+            }
         }, {
             title: "编辑",
-            fun: function () { self.deleteSheet(); }
+            fun: function () {
+                self.deleteSheet();
+            }
         }, {
             title: "刷新歌单",
-            fun: function () { self.reflushSheet(); }
+            fun: function () {
+                self.reflushSheet();
+            }
         }, {
             title: "添加歌单ID",
-            fun: function () { self.addSheet(); }
+            fun: function () {
+                self.addSheet();
+            }
         }, {
             title: "设置用户ID",
-            fun: function () { self.addUser(); }
+            fun: function () {
+                self.addUser();
+            }
         }, {
             title: "帮助",
-            fun: function () { self.useHelp(); }
-        }, {
-            title: "更新日志",
-            fun: function () { self.updateLog(); }
+            fun: function () {
+                self.useHelp();
+            }
         }, {
             title: "清除所有数据",
             fun: function () {
@@ -132,7 +141,7 @@
             }
         }, {
             title: '<a href="mailto:1075056431@qq.com?Subject=FTSMusicPlayer的反馈" target="_top" style="color:#fff;cursor:default;text-decoration: none;">反馈</a>',
-            fun: function () { }
+            fun: function () {}
         }]);
         //歌单中歌曲菜单
         this.mMenuObj = new Menu([{
@@ -177,7 +186,7 @@
         this.playAllList.show();
         this.backButton.show();
         this.isSheet = false;
-        this.sheetScrollTop = this.hList.scrollTop;   //记录滑动位置
+        this.sheetScrollTop = this.hList.scrollTop; //记录滑动位置
         this.hList.scrollTop = 0;
         $(this.hpList).hide();
         $(this.hmList).fadeIn(SmallScreen.SDELAY - 200);
@@ -196,10 +205,12 @@
             if (day < 1) {
                 var len = self.id.length;
                 for (var i in back.playlist) {
-                    self.id.push(back.playlist[i].id);          //存储用户歌单id
-                    self.sheetList[len + parseInt(i)] = { playlist: back.playlist[i] };
+                    self.id.push(back.playlist[i].id); //存储用户歌单id
+                    self.sheetList[len + parseInt(i)] = {
+                        playlist: back.playlist[i]
+                    };
                 }
-                callback && self.getAllSheet(callback);         //加载全部歌单
+                callback && self.getAllSheet(callback); //加载全部歌单
                 return;
             }
         }
@@ -207,12 +218,14 @@
 
             var len = self.id.length;
             for (var i in back.playlist) {
-                self.id.push(back.playlist[i].id);          //存储用户歌单id
-                self.sheetList[len + parseInt(i)] = { playlist: back.playlist[i] };
+                self.id.push(back.playlist[i].id); //存储用户歌单id
+                self.sheetList[len + parseInt(i)] = {
+                    playlist: back.playlist[i]
+                };
             }
             back['date'] = new Date().getTime();
-            localStorage["cacheU" + self.userId] = JSON.stringify(back);     //保存到本地
-            self.getAllSheet(callback);         //加载全部歌单
+            localStorage["cacheU" + self.userId] = JSON.stringify(back); //保存到本地
+            self.getAllSheet(callback); //加载全部歌单
         });
     }
     //获取所有歌单有userId就获取用户歌单
@@ -240,7 +253,7 @@
             (function () {
                 var index = i;
                 self.getSheet(index, function () {
-                    self.write(index);                  //写入html
+                    self.write(index); //写入html
                     callback && callback(index);
                 });
             })();
@@ -284,9 +297,9 @@
                 callback(-1);
                 return;
             }
-            localStorage['cache' + id] = JSON.stringify(list);       //保存到本地
+            localStorage['cache' + id] = JSON.stringify(list); //保存到本地
             self.sheetList[index] = list;
-            callback && callback(index);        //每加载完成一个调用回调函数
+            callback && callback(index); //每加载完成一个调用回调函数
             return list;
         });
     }
@@ -322,7 +335,7 @@
                     if (self.sheetList[index].playlist.tracks == null) {
 
                         var load = new Loading($('.sheetMusicList'));
-                        load.loading();     //开始加载
+                        load.loading(); //开始加载
                         self.getSheetWithId(self.sheetList[index].playlist.id, index, function (index) {
                             //解析歌单并写入html
                             var list = self.parseSheet(index);
@@ -330,7 +343,7 @@
                             self.mListObj.pushList(function (index) {
                                 music.listObj.insertPlayFunction(list[index]);
                             });
-                            load.loaded();      //加载结束
+                            load.loaded(); //加载结束
                         });
                         return;
                     }
@@ -358,7 +371,7 @@
         title.append(img);
         title.append(name);
         title.append(desc);
-        if (!("ActiveXObject" in window)) {     //非IE浏览器
+        if (!("ActiveXObject" in window)) { //非IE浏览器
             title.append(bgImg);
         }
         $(this.mListObj.hList).append(title);
@@ -425,12 +438,12 @@
                 return;
             }
             list["date"] = new Date().getTime();
-            localStorage['cache' + input] = JSON.stringify(list);       //保存到本地
+            localStorage['cache' + input] = JSON.stringify(list); //保存到本地
             //获取初始id
             self.getLocalId();
             //在初始id基础上添加新的id
             self.id.push(input);
-            self.setLocalId();      //保存到本地
+            self.setLocalId(); //保存到本地
             console.info(self.id);
             //清空列表
             self.removeSheet();
@@ -463,7 +476,7 @@
             self.setLocalId();
 
             back['date'] = new Date().getTime();
-            localStorage["cacheU" + self.userId] = JSON.stringify(back);     //保存到本地
+            localStorage["cacheU" + self.userId] = JSON.stringify(back); //保存到本地
             self.removeSheet();
             //加载全部歌单
             self.getAllOfSheet(function (index) {

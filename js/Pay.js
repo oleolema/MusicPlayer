@@ -3,7 +3,7 @@ class Pay {
         this.text = new GetMusic().http("MusicPlayer/../var/pay/pay.js", (back) => {
             console.info(back);
             new Dialog(back).css({
-                background: "#00BCD4"
+                background: "#0201018a"
             });
         });
     }

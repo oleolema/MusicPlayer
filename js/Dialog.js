@@ -1,19 +1,26 @@
 (function () {
     window.Dialog = function (text, time) {
         var self = this;
+        if (text === "" || text === undefined) {
+            return;
+        }
         time = time || 99999999;
         this.show();
-        this.toastObj = new Toast(text, time, function () {
+        this.toastObj = new Toast();
+        this.toastObj.makeText(text, time, function () {
             self.close();
         }).css({
-            background: 'rgb(96, 125, 139)'
-        });
+            background: '#000000c4'
+        }).show();
     }
 
-    Dialog.prototype.css = function(c){
+    Dialog.prototype.css = function (c) {
         this.toastObj.css(c);
     }
 
+    /**
+     * 显示背景遮挡阴影
+     */
     Dialog.prototype.show = function () {
         var self = this;
         this.fill = $('<div class="fillScreen"></div>');

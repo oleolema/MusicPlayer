@@ -7,8 +7,8 @@
         this.searchInput = document.getElementsByClassName('searchInput')[0];
         this.sButton = this.searchGroup.getElementsByClassName('sButton')[0];
         this.radioGroup = this.searchGroup.getElementsByClassName('radioGroup')[0];
-        this.sListObj = new List(this.searchList);              //创建搜索列表
-        this.isSearching = false;       //是否在加载中
+        this.sListObj = new List(this.searchList); //创建搜索列表
+        this.isSearching = false; //是否在加载中
         this.searchSource = 'netease';
         this.init();
         this.sListObj.scrollElement = this.sList;
@@ -37,7 +37,7 @@
                 if (rgChild[i] == this) {
                     rgChild.eq(i).children(0).attr('check', 'true');
                     self.searchSource = rgChild.eq(i).children(0).attr('source');
-                    radiobg.css('left', rgChild.eq(i).children(0)[0].offsetLeft + 'px');        //滑动
+                    radiobg.css('left', rgChild.eq(i).children(0)[0].offsetLeft + 'px'); //滑动
                     self.searchPage = 1;
                     self.smusic();
                     console.info(rgChild.eq(i).children(0)[0].offsetLeft);
@@ -73,7 +73,7 @@
         var load = new Loading($('.search'));
 
         console.info(self.searchPage);
-        if (self.searchPage < 0) {      //搜索到底直接返回
+        if (self.searchPage < 0) { //搜索到底直接返回
             return;
         }
         load.loading();
@@ -88,9 +88,9 @@
             //搜索结果放入搜索列表
             self.sListObj.pushArray(back);
 
-            if (self.sListObj.list.length == 0) {         //没有搜索结果
+            if (self.sListObj.list.length == 0) { //没有搜索结果
                 self.sListObj.hList.innerHTML = '<li style="text-align:center;margin-top: 100px;">' + '没有找到音乐' + '</li>';
-            } else if (back.length == 0) {              //搜索到尾了
+            } else if (back.length == 0) { //搜索到尾了
                 var li = document.createElement('li');
                 li.innerText = '到底了~';
                 li.style.textAlign = "center";

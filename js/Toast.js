@@ -1,32 +1,28 @@
 (function () {
     window.Toast = function (text, time, close) {
         this.makeText(text, time, close);
+        text !== undefined && this.show();
+
+        this.otherCss;
     }
 
     Toast.prototype.makeText = function (text, time, close) {
         this.text = text;
         this.time = time || 2000;
         this.otherClose = close;
-        text !== undefined && this.show();
         return this;
     }
 
-    Toast.prototype.setClose = function(close){
+    Toast.prototype.setClose = function (close) {
         this.otherClose = close;
-        return ;
+        return;
     }
 
 
     Toast.prototype.css = function (c) {
-        this.toast.css(c);
+        this.otherCss = c;
         return this;
     }
-
-    Toast.prototype.close = function (c) {
-        this.otherClose = c;
-        return this;
-    }
-
 
     Toast.prototype.show = function () {
         var self = this;
@@ -35,7 +31,6 @@
         this.toast.append(this.text);
         this.icon.click(function () {
             self.close();
-            self.otherClose && self.otherClose();
         });
 
         this.toast.append(this.icon);
@@ -51,6 +46,8 @@
         this.toast.css({
             top: -this.toast.outerHeight() + "px"
         });
+        //执行自定义css
+        this.otherCss && this.toast.css(this.otherCss);
         setTimeout(function () {
             self.toast.css({
                 top: "-1px",
@@ -59,7 +56,6 @@
         }, 20);
         setTimeout(function () {
             self.close();
-            self.otherClose && self.otherClose();
         }, this.time + 618);
     }
 
@@ -72,6 +68,7 @@
             self.toast.remove();
         }, 618);
         $('body').css("overflow-y", "hidden");
+        self.otherClose && self.otherClose();
     }
 
 })();

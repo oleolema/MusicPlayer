@@ -96,12 +96,14 @@ body {
     transform: translate(308px, 0px);
 }
 
-.playing, .sheet, .search {
+.playing,
+.sheet,
+.search {
     height: 500px;
     background: rgba(0, 0, 1, 0);
     transition: color 0.5s;
     top: 140px;
-    overflow-y: scroll!important;
+    overflow-y: scroll !important;
     color: #fff;
 }
 
@@ -257,7 +259,7 @@ body {
 }
 
 .musicList li.ing {
-    background: rgba(3, 169, 244, 0.51)!important;
+    background: rgba(3, 169, 244, 0.51) !important;
 }
 
 .listNumIng {
@@ -324,7 +326,8 @@ div.listSlide {
 
 /*上滑和下滑*/
 
-.fa-angle-double-up, .fa-angle-double-down {
+.fa-angle-double-up,
+.fa-angle-double-down {
     font-size: 48px;
     text-align: center;
     width: 100px;
@@ -347,7 +350,9 @@ div.listSlide {
 }
 
 @media only screen and (min-width: 600px) {
-    .musicImg:hover .fa-angle-double-up, .musicImg:hover .fa-angle-double-down {
+
+    .musicImg:hover .fa-angle-double-up,
+    .musicImg:hover .fa-angle-double-down {
         top: 0px;
         opacity: 1;
         background-color: rgba(255, 255, 255, 0.514);
@@ -460,6 +465,7 @@ div.listSlide {
     z-index: -10;
     background-color: rgba(16, 89, 247, 0.651);
     transition: left 0.5s;
+    top: 0px;
 }
 
 .radioGroup .radio7 {
@@ -538,7 +544,7 @@ div.listSlide {
 
 .toast {
     position: absolute;
-    background-color: #03A9F4;
+    background-color: #2196F3;
     color: white;
     z-index: 9999;
     padding: 18px 50px 18px 30px;
@@ -564,12 +570,12 @@ div.listSlide {
 
 .fillScreen {
     position: absolute;
-    background: rgba(53, 53, 53, 0.45);
+    background: rgba(0, 0, 0, 0.38);
     left: 0px;
     right: 0px;
     top: 0px;
     bottom: 0px;
     z-index: 9999;
     opacity: 0;
-    transition: opacity 0.618s;
+    transition: opacity 0.382s;
 }
