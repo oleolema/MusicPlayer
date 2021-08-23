@@ -1,4 +1,7 @@
 (function () {
+
+    const host = "http://www.oleolema.cn:8010/MKOnlineMusicPlayer_Unlock/api.php";
+
     var GetMusic = window.GetMusic = function () {
         var self = this;
         this.back = [];
@@ -31,24 +34,24 @@
         }
     }
     GetMusic.prototype.getSheet = function (sheetId, callback) {
-        this.http('https://y.xuelg.com/api.php?callback=yue107&types=playlist&id=' + sheetId, callback);
+        this.http(`${host}?callback=yue107&types=playlist&id=` + sheetId, callback);
     }
     GetMusic.prototype.getUserSheet = function (userId, callback) {
-        this.http('https://y.xuelg.com/api.php?callback=yue107&types=userlist&uid=' + userId, callback);
+        this.http(`${host}?callback=yue107&types=userlist&uid=` + userId, callback);
     }
     GetMusic.prototype.searchMusic = function (pages, callback) {
-        this.http('https://y.xuelg.com/api.php?callback=yue107&types=search&count=' + this.count + '&source=' + this.source + '&pages=' + pages + '&name=' + this.name, callback);
+        this.http(`${host}?callback=yue107&types=search&count=` + this.count + '&source=' + this.source + '&pages=' + pages + '&name=' + this.name, callback);
     }
     GetMusic.prototype.getLyric = function (callback) {
-        this.http("https://y.xuelg.com/api.php?callback=yue107&types=lyric&id=" + this.lyricId + "&source=" + this.source, callback);
+        this.http(`${host}?callback=yue107&types=lyric&id=` + this.lyricId + "&source=" + this.source, callback);
     }
     GetMusic.prototype.getPic = function (callback) {
-        this.http("https://y.xuelg.com/api.php?callback=yue107&types=pic&id=" + this.picId + "&source=" + this.source, callback);
+        this.http(`${host}?callback=yue107&types=pic&id=` + this.picId + "&source=" + this.source, callback);
     }
     GetMusic.prototype.getMusic = function (callback) {
         var self = this;
         var music = {};
-        this.http("https://y.xuelg.com/api.php?callback=yue107&types=url&id=" + this.musicId + "&source=" + this.source, function () {
+        this.http(`${host}?callback=yue107&types=url&id=` + this.musicId + "&source=" + this.source, function () {
             music.music = self.back;
             self.getLyric(function () {
                 console.info(self.back);
