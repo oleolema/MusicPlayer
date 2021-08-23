@@ -1,6 +1,6 @@
 (function () {
 
-    const host = "http://www.oleolema.cn:8010/MKOnlineMusicPlayer_Unlock/api.php";
+    const host = "https://www.oleolema.cn/MKOnlineMusicPlayer_Unlock/api.php";
 
     var GetMusic = window.GetMusic = function () {
         var self = this;
